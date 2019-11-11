@@ -1,12 +1,12 @@
 {
-		"name": "iSearch",
+	"name": "iSearch",
 	"description": "iSearch Widget Github",
 	"eula": "",
 	"vendor": "iProsis",
 	"license": "",
 	"id": "com.iProsis.sample.search",
 	"newInstancePrefix": "iSearch",
-	"icon" : "https://www.sketch.com/images/pages/press/sketch-press-kit/app-icons/sketch-mac-icon@2x.png",
+	"icon" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
 	"version": "1.0.0",
 	"webcomponents": [
 		{
