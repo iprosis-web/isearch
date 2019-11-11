@@ -1,0 +1,65 @@
+{
+	
+	"name": "iSearch",
+	"description": "iSearch Widget Github",
+	"eula": "",
+	"vendor": "iProsis",
+	"license": "",
+	"id": "com.iProsis.sample.search",
+	"newInstancePrefix": "iSearch",
+	"icon" : "https://www.sketch.com/images/pages/press/sketch-press-kit/app-icons/sketch-mac-icon@2x.png",
+	"version": "1.0.0",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "com-iprosis-sample-search",
+			"url": "https://github.com/AnnaKrasnitski/isearch/webcomponent.js",
+			"integrity":"sha384-911d421d783fa887d90227af6470d9e9a27fc090c2fd1e699126e71b9de1d5a2b7b9bebdc908c4b60f0284ec2ca978dd"
+		},
+		{
+			"kind": "styling",
+			"tag": "com-iprosis-sample-search-aps",
+			"url": "https://github.com/AnnaKrasnitski/isearch/apswebcomponent.js",
+			"integrity": "6fc00ba8d1497cbba9c40a5e16ccb62fea31bf9eeef5c4afdf3d72168c5899c6336e8cb421a71c753d36d5d67fe4ab36"
+		}
+	],
+	"properties": {
+		"urlLink": {
+			"type": "string",
+			"description": "url link"
+		},
+		"width": {
+			"type": "number",
+			"default": 300
+		},
+		"height": {
+			"type": "number",
+			"default": 300
+		},
+	
+	},
+	"methods": {
+		"getValue": {
+			"returnType": "string",
+			"description": "Get the url value",
+			"parameters": [],
+			"body": "return this.urlLink;"
+		},
+		"setValue": {
+			"description": "Set the url value",
+			"parameters": [
+				{
+					"name": "value",
+					"type": "string",
+					"description": "The new val"
+				}
+			],
+			"body": "this.urlLink = value;"
+		}
+	},
+	"events": {
+		"onClick": {
+			"description": "Happenes when the frame is clicked"
+		}
+	}
+}
