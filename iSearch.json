@@ -19,7 +19,7 @@
 			"kind": "styling",
 			"tag": "com-iprosis-sample-search-aps",
 			"url": "https://github.com/AnnaKrasnitski/isearch/apswebcomponent.js",
-			"integrity": "6fc00ba8d1497cbba9c40a5e16ccb62fea31bf9eeef5c4afdf3d72168c5899c6336e8cb421a71c753d36d5d67fe4ab36"
+			"integrity": "sha384-6fc00ba8d1497cbba9c40a5e16ccb62fea31bf9eeef5c4afdf3d72168c5899c6336e8cb421a71c753d36d5d67fe4ab36"
 		}
 	],
 	"properties": {
@@ -35,7 +35,6 @@
 			"type": "number",
 			"default": 300
 		}
-	
 	},
 	"methods": {
 		"getValue": {
