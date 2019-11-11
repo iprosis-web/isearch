@@ -35,7 +35,7 @@
 		"height": {
 			"type": "number",
 			"default": 300
-		},
+		}
 	
 	},
 	"methods": {
