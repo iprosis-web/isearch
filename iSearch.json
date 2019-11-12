@@ -66,55 +66,7 @@
 			"description": "Returns the selected text",
 			"parameters": [],
 			"body": "return this.sval;"
-		},
-		"setEnabled": {
-			"description": "Enables or diisables component",
-			"parameters": [
-				{
-					"name": "senaRes",
-					"type": "boolean",
-					"description": "enable or not"
-				}
-			],
-			"body": "this.sena = senaRes;"
-		},
-		"isEnabled": {
-			"returnType": "boolean",
-			"description": "Returns whether component is enabled",
-			"parameters": [],
-			"body": "return this.sena;"
-		},
-		"getPlaceHolder": {
-			"returnType": "string",
-			"description": "Returns the place holder",
-			"parameters": [],
-			"body": "return this.splaceholder;"
-		},
-		"setPlaceHolder": {
-			"description": "Sets the place Holder of the component",
-			"parameters": [
-				{
-					"name": "splaceholder"
-				}
-			],
-			"body": "this.sena = splaceholder;"
-		},
-		"getSearchButton": {
-			"returnType": "string",
-			"description": "Returns the place holder",
-			"parameters": [],
-			"body": "return this.splaceholder;"
-		},
-		"setSearchButton": {
-			"description": "Sets header text value",
-			"parameters": [
-				{
-					"name": "sHeader"
-				}
-			],
-			"body": "this.sHeader = sHeader;"
 		}
-
 	},
 	"events": {
 		"onClick": {
