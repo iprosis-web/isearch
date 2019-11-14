@@ -41,19 +41,6 @@
 			"description": "selected text"
 			
 		},
-		"sena":{
-			"type": "boolean",
-			"description": "enables component or not"
-		},
-		"splaceholder":{
-			"type": "string",
-			"description": "placeholder of the component"
-			
-		},
-		"sHeader":{
-			"type": "string",
-			"description": "Header of search"
-	},
 	"methods": {
 		"getValue": {
 			"returnType": "string",
