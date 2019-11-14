@@ -31,4 +31,3 @@ class ISearch extends HTMLElement {
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
 	})();
-
