@@ -67,5 +67,5 @@ class ISearch extends HTMLElement {
 // 		  }
  }
 
-customElements.define('com-iprosis-sample-search-aps', GaugeAps);
+customElements.define('com-iprosis-sample-search-aps', ISearch);
 })();
