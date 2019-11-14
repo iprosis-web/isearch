@@ -23,42 +23,41 @@
 		}
 	],
 	"properties": {
+		"sVal": {
+			"type": "string",
+			"description": "some value"
+		},
 		"width": {
 			"type": "number",
-			"default": 50
+			"default": 200
 		},
 		"height": {
 			"type": "number",
 			"default": 100
-		},
-		"sval":{
-			"type": "string",
-			"description": "selected value"
-			
-		},
-		"stext":{
-			"type": "string",
-			"description": "selected text"
-			
-		},
+		}
+	},
 	"methods": {
 		"getValue": {
 			"returnType": "string",
-			"description": "Returns the selected value",
+			"description": "Get the url value",
 			"parameters": [],
-			"body": "return this.sval;"
+			"body": "return this.sVal;"
 		},
-		"getText": {
-			"returnType": "string",
-			"description": "Returns the selected text",
-			"parameters": [],
-			"body": "return this.sval;"
+		"setValue": {
+			"description": "Set the url value",
+			"parameters": [
+				{
+					"name": "value",
+					"type": "string",
+					"description": "The new val"
+				}
+			],
+			"body": "this.sVal = value;"
 		}
 	},
 	"events": {
 		"onClick": {
-			"description": "Happenes when  search button clicked"
+			"description": "on Search "
 		}
 	}
-}
 }
