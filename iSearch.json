@@ -8,12 +8,13 @@
 	"newInstancePrefix": "iSearch",
 	"icon" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
 	"version": "1.0.0",
+
 	"webcomponents": [
 		{
 			"kind": "main",
 			"tag": "com-iprosis-sample-search",
-			"url": "https://github.com/AnnaKrasnitski/isearch/webcomponent.js",
-			"integrity":"sha384-911d421d783fa887d90227af6470d9e9a27fc090c2fd1e699126e71b9de1d5a2b7b9bebdc908c4b60f0284ec2ca978dd"
+			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
+			"integrity":"sha256-395e052832ee66bd3609dfceed25638757a1c3516556413cf8b51b7bc45c60ac"
 		}
 
 	],
