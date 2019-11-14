@@ -20,10 +20,10 @@ class ISearch extends HTMLElement {
 	
 
     get val() {
-    	return Math.round(this.sVal);
+    	return this.sVal;
     }
     set val(value) {
-		this.sVal =  Math.max(0, Math.min(100, value));
+		this.sVal =  value;
 		
 	};
 
