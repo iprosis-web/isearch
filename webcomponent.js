@@ -79,13 +79,16 @@ class ISearch extends HTMLElement {
 		super();
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		this.sVal = 0;
+		this.sVal = "";
 		this.stext ="";
-		this.sena=true;
-		this.splaceholder="";
-		this.sHeader="HEAD";
+		this.benable=true;
+		this.splaceholder="Search";
+		this.bSuggest=true;
+		this.bKey=false;
+		this.sDim ="" ;
+		this.sBtn =true ;
+		this.iMaxL =true ;
 
-		
 	// TRY CODE IN CONSTRUCTOR INSTED OF INNER HTML	
 	window.onload = function(){ 
 		//Get submit button
@@ -101,7 +104,6 @@ class ISearch extends HTMLElement {
 	
 	}
 
-		
 	};
 
 	 get val() {

@@ -22,35 +22,50 @@
 	"properties": {
 		"width": {
 			"type": "number",
-			"default": 50
+			"default": 100
 		},
 		"height": {
 			"type": "number",
-			"default": 100
+			"default":50
 		},
 		"sval":{
 			"type": "string",
-			"description": "selected value"
+			"description": "Key result set"
 			
 		},
 		"stext":{
 			"type": "string",
-			"description": "selected text"
-			
+			"description": "Text result set"			
 		},
-		"sena":{
+		"benable":{
 			"type": "boolean",
-			"description": "enables component or not"
+			"description": "Whether to enable or disable"
 		},
 		"splaceholder":{
 			"type": "string",
-			"description": "placeholder of the component"
+			"description": "Place holder string of the component"
 			
 		},
-		"sHeader":{
+		"bSuggest":{
+			"type": "boolean",
+			"description": "Whether to show or hide the suggestion option"
+		},
+		"bKey":{
+			"type": "boolean",
+			"description": "Whether show or hide key"
+		},
+		"sDim":{
 			"type": "string",
-			"description": "Header of search"
-	}
+			"description": "Selected dimension for suggestion list"
+		},
+		"sBtn":{
+			"type": "boolean",
+			"description": "Whether to show or hide the searchbutton"
+		},
+		"iMaxL":{
+			"type": "integer",
+			"description": "The maximum search string"
+		}
 	},
 	"methods": {
 		"getValue": {
@@ -63,24 +78,24 @@
 			"returnType": "string",
 			"description": "Returns the selected text",
 			"parameters": [],
-			"body": "return this.sval;"
+			"body": "return this.sText;"
 		},
 		"setEnabled": {
-			"description": "Enables or diisables component",
+			"description": "Enables or disables component",
 			"parameters": [
 				{
-					"name": "senaRes",
+					"name": "benableRes",
 					"type": "boolean",
 					"description": "enable or not"
 				}
 			],
-			"body": "this.sena = senaRes;"
+			"body": "this.benable = benableRes;"
 		},
 		"isEnabled": {
 			"returnType": "boolean",
 			"description": "Returns whether component is enabled",
 			"parameters": [],
-			"body": "return this.sena;"
+			"body": "return this.benable;"
 		},
 		"getPlaceHolder": {
 			"returnType": "string",
@@ -92,16 +107,87 @@
 			"description": "Sets the place Holder of the component",
 			"parameters": [
 				{
-					"name": "splaceholder"
+					"name": "splaceholder",
+					"type": "string",
+					"description": "string in textbox"
 				}
 			],
-			"body": "this.sena = splaceholder;"
+			"body": "this.splaceholder = splaceholder;"
+		},
+		"isSearchButton": {
+			"returnType": "boolean",
+			"description": "Returns whether search button is visible",
+			"parameters": [],
+			"body": "return this.sBtn;"
+		},
+		"setSearchBtn": {
+			"description": "Returns Current header text value",
+			"parameters": [
+				{
+					"name": "sTitle",
+					"type": "string",
+					"description": "string in textbox"
+				}
+			],
+			"body": "this.sBtn = sTitle;"
+		},
+		"setEnableSuggestions": {
+			"description": "Enables or disables the suggestions",
+			"parameters": [
+				{
+					"name": "bSuggest",
+					"type": "boolean",
+					"description": "is suggested"
+				}
+			],
+			"body": "this.bSuggest = bSuggest;"
+		},
+		"isEnableSuggestions": {
+			"returnType": "boolean",
+			"description": "Returns whether suggestions is shown",
+			"parameters": [],
+			"body": "return this.bSuggest;"
+		},
+		"setDisplayKey": {
+			"description": "Displays or hide the key",
+			"parameters": [
+				{
+					"name": "bKey",
+					"type": "boolean",
+					"description": "is key displayed"
+				}
+			],
+			"body": "this.bKey =bkey;"
+		},
+		"isDisplayKey": {
+			"returnType": "boolean",
+			"description": "Returns whether the key is displayed",
+			"parameters": [],
+			"body": "return this.bKey;"
+		},
+		"getSelectedDimension": {
+			"returnType": "string",
+			"description": "Returns the selected dimension",
+			"parameters": [],
+			"body": "return this.splaceholder;"
+		},
+		"setSelectedDimension": {
+			"description": "Sets the selected dimension",
+			"parameters": [
+				{
+					"name": "sDim",
+					"type": "string",
+					"description": "selected Dimension"
+				}
+			],
+			"body": "this.sDim = sDim;"
 		}
+
 
 	},
 	"events": {
-		"onClick": {
-			"description": "Happenes when  search button clicked"
+		"onSearch": {
+			"description": "On search event"
 		}
 	}
 }
