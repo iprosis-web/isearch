@@ -80,9 +80,9 @@ class ISearch extends HTMLElement {
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		var dataResultSet = null;
-			var isEnabled = null;
+			var _isEnabled = null;
 			var placeHolder = null;
-			var isSearchButton = null;
+			var _isSearchButton = null;
 			var isSuggestions = null;
 			var maxLength = null;
 			var selectedDimension = null;
@@ -164,11 +164,11 @@ class ISearch extends HTMLElement {
 			};
 			
 			this.afterUpdate = function() {
-				that.oSearchField.setEnabled(isEnabled);
+				that.oSearchField.setEnabled(_isEnabled);
 				that.oSearchField.setPlaceholder(placeHolder);
 				that.oSearchField.setEnableSuggestions(isSuggestions);
 				that.oSearchField.setMaxLength(maxLength);
-				that.oSearchField.setShowSearchButton(isSearchButton);
+				that.oSearchField.setShowSearchButton(_isSearchButton);
 	
 				if (dataResultSet){
 					if (reload){	
@@ -272,13 +272,13 @@ class ISearch extends HTMLElement {
 				};
 			};
 	
-			this.IsEnabled = function(value) {
+			this._IsEnabled = function(value) {
 				if(value===undefined) {
 					Reload = false;
-					return isEnabled;
+					return _isEnabled;
 				} else {
 					Reload = false;
-					isEnabled = value;
+					_isEnabled = value;
 					return this;
 				};
 			};
@@ -294,13 +294,13 @@ class ISearch extends HTMLElement {
 				};
 			};
 			
-			this.IsSearchButton = function(value) {
+			this._IsSearchButton = function(value) {
 				if(value===undefined) {
 					Reload = false;
-					return isSearchButton;
+					return _isSearchButton;
 				} else {
 					Reload = false;
-					isSearchButton = value;
+					_isSearchButton = value;
 					return this;
 				};
 			};

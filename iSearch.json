@@ -22,47 +22,47 @@
 	"properties": {
 		"width": {
 			"type": "number",
-			"default": 70
+			"default": 100
 		},
 		"height": {
 			"type": "number",
 			"default":50
 		},
-		"sval":{
+		"selectedValue":{
 			"type": "string",
 			"description": "Key result set"
 			
 		},
-		"stext":{
+		"selectedText":{
 			"type": "string",
 			"description": "Text result set"			
 		},
-		"benable":{
+		"_isEnabled":{
 			"type": "boolean",
 			"description": "Whether to enable or disable"
 		},
-		"splaceholder":{
+		"placeHolder":{
 			"type": "string",
 			"description": "Place holder string of the component"
 			
 		},
-		"bSuggest":{
+		"isSuggestions":{
 			"type": "boolean",
 			"description": "Whether to show or hide the suggestion option"
 		},
-		"bKey":{
+		"displayKey":{
 			"type": "boolean",
 			"description": "Whether show or hide key"
 		},
-		"sDim":{
+		"selectedDimension":{
 			"type": "string",
 			"description": "Selected dimension for suggestion list"
 		},
-		"sBtn":{
+		"_isSearchButton":{
 			"type": "boolean",
 			"description": "Whether to show or hide the searchbutton"
 		},
-		"iMaxL":{
+		"maxLength":{
 			"type": "integer",
 			"description": "The maximum search string"
 		}
@@ -72,13 +72,13 @@
 			"returnType": "string",
 			"description": "Returns the selected value",
 			"parameters": [],
-			"body": "return this.sval;"
+			"body": "return this.selectedValue;"
 		},
 		"getText": {
 			"returnType": "string",
 			"description": "Returns the selected text",
 			"parameters": [],
-			"body": "return this.sText;"
+			"body": "return this.selectedText;"
 		},
 		"setEnabled": {
 			"description": "Enables or disables component",
@@ -89,19 +89,19 @@
 					"description": "enable or not"
 				}
 			],
-			"body": "this.benable = benableRes;"
+			"body": "this._isEnabled = benableRes;"
 		},
 		"isEnabled": {
 			"returnType": "boolean",
 			"description": "Returns whether component is enabled",
 			"parameters": [],
-			"body": "return this.benable;"
+			"body": "return this._isEnabled;"
 		},
 		"getPlaceHolder": {
 			"returnType": "string",
 			"description": "Returns the place holder",
 			"parameters": [],
-			"body": "return this.splaceholder;"
+			"body": "return this.placeHolder;"
 		},
 		"setPlaceHolder": {
 			"description": "Sets the place Holder of the component",
@@ -112,15 +112,15 @@
 					"description": "string in textbox"
 				}
 			],
-			"body": "this.splaceholder = splaceholder;"
+			"body": "this.placeHolder = splaceholder;"
 		},
 		"isSearchButton": {
 			"returnType": "boolean",
 			"description": "Returns whether search button is visible",
 			"parameters": [],
-			"body": "return this.sBtn;"
+			"body": "return this._isSearchButton;"
 		},
-		"setSearchBtn": {
+		"setSearchButton": {
 			"description": "Returns Current header text value",
 			"parameters": [
 				{
@@ -129,7 +129,7 @@
 					"description": "string in textbox"
 				}
 			],
-			"body": "this.sBtn = sTitle;"
+			"body": "this._isSearchButton = sTitle;"
 		},
 		"setEnableSuggestions": {
 			"description": "Enables or disables the suggestions",
@@ -140,13 +140,13 @@
 					"description": "is suggested"
 				}
 			],
-			"body": "this.bSuggest = bSuggest;"
+			"body": "this.isSuggestions = bSuggest;"
 		},
 		"isEnableSuggestions": {
 			"returnType": "boolean",
 			"description": "Returns whether suggestions is shown",
 			"parameters": [],
-			"body": "return this.bSuggest;"
+			"body": "return this.isSuggestions;"
 		},
 		"setDisplayKey": {
 			"description": "Displays or hide the key",
@@ -157,19 +157,19 @@
 					"description": "is key displayed"
 				}
 			],
-			"body": "this.bKey =bkey;"
+			"body": "this.displayKey =bkey;"
 		},
 		"isDisplayKey": {
 			"returnType": "boolean",
 			"description": "Returns whether the key is displayed",
 			"parameters": [],
-			"body": "return this.bKey;"
+			"body": "return this.displayKey;"
 		},
 		"getSelectedDimension": {
 			"returnType": "string",
 			"description": "Returns the selected dimension",
 			"parameters": [],
-			"body": "return this.splaceholder;"
+			"body": "return this.placeHolder;"
 		},
 		"setSelectedDimension": {
 			"description": "Sets the selected dimension",
@@ -180,7 +180,7 @@
 					"description": "selected Dimension"
 				}
 			],
-			"body": "this.sDim = sDim;"
+			"body": "this.selectedDimension = sDim;"
 		}
 
 
