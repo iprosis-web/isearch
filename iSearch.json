@@ -14,13 +14,14 @@
 			"kind": "main",
 			"tag": "com-iprosis-sample-search",
 			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
-			"integrity": "sha256-395e052832ee66bd3609dfceed25638757a1c3516556413cf8b51b7bc45c60ac"
+			"integrity": "",
+			"ignoreIntegrity": true
 		}
 
 	],
 	"properties": {
 		"sVal": {
-			"type": "string",
+			"type": "string", 
 			"description": "some value"
 		},
 		"width": {
