@@ -22,7 +22,7 @@
 	"properties": {
 		"width": {
 			"type": "number",
-			"default": 100
+			"default": 280
 		},
 		"height": {
 			"type": "number",

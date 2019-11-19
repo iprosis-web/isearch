@@ -272,7 +272,7 @@ class ISearch extends HTMLElement {
 				};
 			};
 	
-			this._IsEnabled = function(value) {
+			this.IsEnabled = function(value) {
 				if(value===undefined) {
 					Reload = false;
 					return _isEnabled;
@@ -294,7 +294,7 @@ class ISearch extends HTMLElement {
 				};
 			};
 			
-			this._IsSearchButton = function(value) {
+			this.IsSearchButton = function(value) {
 				if(value===undefined) {
 					Reload = false;
 					return _isSearchButton;
