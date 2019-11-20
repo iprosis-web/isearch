@@ -53,7 +53,7 @@
 					<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value=""><input type="submit" value=">" class="tfbutton2">
 			</form>
 			<div class="tfclear"></div>
-		</div>
+	</div>
 	`;
 
 class ISearch extends HTMLElement {
