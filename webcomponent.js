@@ -25,6 +25,7 @@ class ISearch extends HTMLElement {
 		var that = this;
 		var Data = null;
 		this.oSearchField = null;
+	
 		
 		this.init = function() {
 			
@@ -286,25 +287,7 @@ class ISearch extends HTMLElement {
 			};
 		};	
 		
-	});	
-});
-
-
-	// TRY CODE IN CONSTRUCTOR INSTED OF INNER HTML	
-	window.onload = function(){ 
-		//Get submit button
-		var submitbutton = document.getElementById("tfq");
-		//Add listener to submit button
-		if(submitbutton.addEventListener){
-			submitbutton.addEventListener("onClick", function() {
-				if (submitbutton.value == 'Search'){//Customize this text string to whatever you want
-					submitbutton.value = '';
-				}
-			});
-		}
-	
-	}
-
+	}};
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
 	})();
