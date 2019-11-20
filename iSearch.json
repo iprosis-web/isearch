@@ -41,15 +41,6 @@
 			"type": "boolean",
 			"description": "Whether to enable or disable"
 		},
-		"placeHolder":{
-			"type": "string",
-			"description": "Place holder string of the component"
-			
-		},
-		"isSuggestions":{
-			"type": "boolean",
-			"description": "Whether to show or hide the suggestion option"
-		},
 		"displayKey":{
 			"type": "boolean",
 			"description": "Whether show or hide key"
@@ -96,57 +87,6 @@
 			"description": "Returns whether component is enabled",
 			"parameters": [],
 			"body": "return this._isEnabled;"
-		},
-		"getPlaceHolder": {
-			"returnType": "string",
-			"description": "Returns the place holder",
-			"parameters": [],
-			"body": "return this.placeHolder;"
-		},
-		"setPlaceHolder": {
-			"description": "Sets the place Holder of the component",
-			"parameters": [
-				{
-					"name": "splaceholder",
-					"type": "string",
-					"description": "string in textbox"
-				}
-			],
-			"body": "this.placeHolder = splaceholder;"
-		},
-		"isSearchButton": {
-			"returnType": "boolean",
-			"description": "Returns whether search button is visible",
-			"parameters": [],
-			"body": "return this._isSearchButton;"
-		},
-		"setSearchButton": {
-			"description": "Returns Current header text value",
-			"parameters": [
-				{
-					"name": "sTitle",
-					"type": "string",
-					"description": "string in textbox"
-				}
-			],
-			"body": "this._isSearchButton = sTitle;"
-		},
-		"setEnableSuggestions": {
-			"description": "Enables or disables the suggestions",
-			"parameters": [
-				{
-					"name": "bSuggest",
-					"type": "boolean",
-					"description": "is suggested"
-				}
-			],
-			"body": "this.isSuggestions = bSuggest;"
-		},
-		"isEnableSuggestions": {
-			"returnType": "boolean",
-			"description": "Returns whether suggestions is shown",
-			"parameters": [],
-			"body": "return this.isSuggestions;"
 		},
 		"setDisplayKey": {
 			"description": "Displays or hide the key",
