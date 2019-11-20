@@ -1,6 +1,7 @@
 (function()  {
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
+	<style type="text/css">
 	#tfnewsearch{
 		float:right;
 		padding:20px;
