@@ -25,7 +25,7 @@
 		width: 195px;
 		background-color: lightgray;
 	}
-	</div>
+	</style>
 	`;
 
 class ISearch extends HTMLElement {
