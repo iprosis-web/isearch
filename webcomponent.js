@@ -13,26 +13,6 @@
 		padding: 5px;
 		width: 100%;
 	}
-	.tfbutton2 {
-		icon: "https://cdn3.vectorstock.com/i/1000x1000/62/77/lupe-icon-search-design-graphic-vector-10066277.jpg"
-		margin: 0;
-		padding: 5px 7px;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size:14px;
-		font-weight:bold;
-		outline: none;
-		cursor: pointer;
-		text-align: center;
-		text-decoration: none;
-		color: #ffffff;
-		border: solid 1px #0076a3; border-right:0px;
-		background: #0095cd;
-		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
-		border-top-right-radius: 5px 5px;
-		border-bottom-right-radius: 5px 5px;
-		
-	}
 	.autocomplete-suggestion {
 		overflow: hidden;
 		padding: 2px 5px;
