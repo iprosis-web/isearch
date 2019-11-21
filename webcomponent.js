@@ -52,8 +52,7 @@ class ISearch extends HTMLElement {
 				if (element === ","){
 					data.push(x);
 					console.log(""+data);
-					x= "";
-				}
+					x= ""; }
 				console.log(""+sdata);
 			});
 		
