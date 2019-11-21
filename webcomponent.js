@@ -55,7 +55,11 @@ class ISearch extends HTMLElement {
 					x= ""; }
 				console.log("x3");
 			});
-		
+			var index = 0;
+			data.forEach(function(element) {
+				sdata[index] = element;
+				index = index +1;
+			});
 			// var oModel = new sap.ui.model.json.JSONModel(data);
 			// var oTemplate = this.getTemplate();
 			// that.oSearchField.setModel(oModel);
