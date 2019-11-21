@@ -41,135 +41,7 @@ class ISearch extends HTMLElement {
 		super();
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		var dataResultSet = null;
-		var selectedValue = null;
-		var selectedText = null;
-		var reload = false;
-		var that = this;
-		var Data = null;
-		this.oSearchField = null;
 		var sData=[];
-		
-		this.init = function() {
-			
-			if( window.sap && sap.zen && sap.zen.designmode)
-				{
-					var x = "dd";
-				}
-			
-			
-			if (this._alive){
-				return;
-			} else {
-			
-				currentDiv = "DIV_" + this.$().attr('id');
-				var currentSf = "SF_" + this.$().attr('id');
-				
-				// Create Search Field control and load data
-				that.oSearchField = new sap.m.SearchField(currentSf, {
-					enableSuggestions: true,
-					search: function(oEvent) {
-						var text = "";
-						var key = "";
-						var isFire = true;
-						if (isSuggestions === false)
-							{
-								text = oEvent.getParameter("query");
-								key = text;
-							}else{
-								var item = oEvent.getParameter("suggestionItem");
-								if(item)
-									{
-										text = item.getText();
-										key = item.getKey();
-									}else if (oEvent.getParameter("query") === selectedText)
-										{
-										 	isFire = false;
-										}
-							}
-				//		oEvent.getParameter("query");
-							if (isFire)
-								{
-									selectedValue = key;
-									selectedText = text;
-						            that.firePropertiesChanged(["SelectedValue"]);
-						            that.firePropertiesChanged(["SelectedText"]);
-						            that.fireEvent("onSearch");  
-								}
-					},
-
-					suggest: function(oEvent) {
-							var value =oEvent.getParameter("suggestValue");
-							var filters = [];
-							if(value !== "")
-								{
-								 filters = that.getFilters(value);		
-								}else{
-									filters = that.getFilters("999999iprosis");		
-								}
-							that.oSearchField.getBinding("suggestionItems").filter(filters);
-							that.oSearchField.suggest();
-					}
-				});
-
-			this.$().html('<div id="' + currentDiv + '"> ');
-			that.oSearchField.placeAt(currentDiv);
-			this._alive = true;
-			}
-		};
-		
-		this.afterUpdate = function() {
-			that.oSearchField.setEnabled(isEnabled);
-			that.oSearchField.setPlaceholder(placeHolder);
-			that.oSearchField.setEnableSuggestions(isSuggestions);
-			that.oSearchField.setMaxLength(maxLength);
-			that.oSearchField.setShowSearchButton(isSearchButton);
-
-			if (dataResultSet){
-				if (reload){	
-					return;
-				} else {
-					this.insertData();
-					reload = true;
-				}
-			}
-			
-		};
-		this.getFilters = function(value){
-			var filters = [];
-			oFilterText = new sap.ui.model.Filter("text", function(sText) {
-				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-			});
-			oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
-				 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-				 });
-			
-			if (displayKey === true)
-				{
-					filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
-				}else{
-					filters = [	new sap.ui.model.Filter([oFilterText], false)];
-				}
-			
-			return filters
-		};
-		this.getTemplate = function(){
-			if (displayKey === true)
-				{
-					 oTemplate = new sap.m.SuggestionItem({
-						text: "{text}",
-						key: "{key}",
-						description:"{key}"
-					 });
-				}else{
-					oTemplate = new sap.m.SuggestionItem({
-					text: "{text}",
-					key: "{key}"
-				});
-			}
-			return oTemplate;
-		};
-		
 		
 		this.setData = function(result){
 			var data = [];
@@ -182,7 +54,6 @@ class ISearch extends HTMLElement {
 					console.log(""+data);
 					x= "";
 				}
-				data = sdata;
 				console.log(""+sdata);
 			});
 		
@@ -195,53 +66,6 @@ class ISearch extends HTMLElement {
 		this.getData = function(){
 			return sdata;
 		};
-		
-		this.insertData = function() {
-
-			if (selectedDimension)
-				{
-				var dim = selectedDimension.toUpperCase();
-					that.callZTLFunction("getMembers", that.getData, dim);
-				}
-					
-//			data = dataResultSet.dimensions[0].members;
-//			oModel.setSizeLimit(maxItems);			
-		};
-		
-		this.DataResultSet = function(value) {
-			if(value===undefined) {
-				return dataResultSet;
-			} else {
-				//Clear Auto
-				if (reload) {
-					that.oSearchField.removeAllSuggestionItems();
-					that.oSearchField.setValue("");
-					reload = false;
-				}
-				dataResultSet = value;
-				return this;
-			};
-		};	
-		
-
-	
-		this.SelectedValue = function(value) {
-			if(value===undefined) {
-				return selectedValue;
-			} else {
-				selectedValue = value;
-				return this;
-			};
-		};
-		
-		this.SelectedText = function(value) {
-			if(value===undefined) {
-				return selectedText;
-			} else {
-				selectedText = value;
-				return this;
-			};
-		};	
 		
 	}};
 	  /* Define web component - input: tag and class */
