@@ -171,15 +171,16 @@ class ISearch extends HTMLElement {
 		};
 		
 		
-		this.getData = function(result){
+		this.setData = function(result){
 			var data = [];
-			var x = result;
-			var obj = {};
+			x="";
 			result.forEach(function(element) {
-				obj = {};
-				obj.text = element.text;
-				obj.key = element.key;
-				data.push(obj);
+				x=x+element;
+				if (element == ","){
+					data.push(x);
+					x= "";
+				}
+				
 			});
 		
 			var oModel = new sap.ui.model.json.JSONModel(data);
@@ -187,6 +188,9 @@ class ISearch extends HTMLElement {
 			that.oSearchField.setModel(oModel);
 			that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
 			
+		}
+		this.getData = function(){
+			return data;
 		}
 		
 		this.insertData = function() {
