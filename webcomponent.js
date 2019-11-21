@@ -100,6 +100,8 @@ class ISearch extends HTMLElement {
 			return sdata;
 		};
 		
+		window.addEventListener('DOMContentLoaded', (event) => {////////////////
+			console.log('DOM fully loaded and parsed');
 		
 		function autocomplete(inp, arr) {
 			/*the autocomplete function takes two arguments,
@@ -205,9 +207,9 @@ class ISearch extends HTMLElement {
 		   /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 		   autocomplete(document.getElementById("myInput"), ["initial"]);
 		
-	}};
-
-
+	
+});
+}}; // end constructor
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
-	})();
+	})(); // end function
