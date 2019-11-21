@@ -183,15 +183,15 @@ class ISearch extends HTMLElement {
 				
 			});
 		
-			var oModel = new sap.ui.model.json.JSONModel(data);
-			var oTemplate = this.getTemplate();
-			that.oSearchField.setModel(oModel);
-			that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
+			// var oModel = new sap.ui.model.json.JSONModel(data);
+			// var oTemplate = this.getTemplate();
+			// that.oSearchField.setModel(oModel);
+			// that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
 			
-		}
+		};
 		this.getData = function(){
 			return data;
-		}
+		};
 		
 		this.insertData = function() {
 

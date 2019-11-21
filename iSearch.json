@@ -56,7 +56,6 @@
 			"body": "return this.selectedText;"
 		},
 		"setData": {
-			"returnType": "string",
 			"description": "Returns the data as list",
 			"parameters":[ {
 				"name": "dataRes",
