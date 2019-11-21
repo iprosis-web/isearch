@@ -12,6 +12,9 @@
 		margin: 0;
 		padding: 5px;
 		width: 100%;
+		
+	}
+	.tfbutton2{
 		icon: "https://cdn3.vectorstock.com/i/1000x1000/62/77/lupe-icon-search-design-graphic-vector-10066277.jpg"
 	}
 	.autocomplete-suggestion {
@@ -28,7 +31,7 @@
 	}
 	</style>
 	<div>
-	<input type="text" id="query" class="text-field valid" autocomplete="on" placeholder=""><input type="submit" value=">" class="tfbutton2">
+	<input type="submit" value=">" class="tfbutton2"><input type="text" id="query" class="text-field valid" autocomplete="on" placeholder="">
 	</div>
 	`;
 
