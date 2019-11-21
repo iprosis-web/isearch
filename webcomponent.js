@@ -57,14 +57,8 @@
 		  /*when hovering an item:*/
 		  background-color: #e9e9e9; 
 		}
-		
-		.autocomplete-active {
-		  /*when navigating through the items using the arrow keys:*/
-		  background-color: DodgerBlue !important; 
-		  color: #ffffff; 
-		}
 
-		<form autocomplete="on" id="myForm" action="/action_page.php">
+		<form autocomplete="on" id="myForm">
 		  <div class="autocomplete" style="width:300px;">
 			<input id="myInput" type="text" name="myCountry" placeholder="">
 		  </div>
@@ -99,9 +93,6 @@ class ISearch extends HTMLElement {
 		this.getData = function(){
 			return sdata;
 		};
-		
-		window.addEventListener('DOMContentLoaded', (event) => {////////////////
-			console.log('DOM fully loaded and parsed');
 		
 		function autocomplete(inp, arr) {
 			/*the autocomplete function takes two arguments,
@@ -144,47 +135,6 @@ class ISearch extends HTMLElement {
 				  }
 				}
 			});
-			// /*execute a function presses a key on the keyboard:*/
-			// inp.addEventListener("keydown", function(e) {
-			// 	var x = document.getElementById(this.id + "autocomplete-list");
-			// 	if (x) x = x.getElementsByTagName("div");
-			// 	if (e.keyCode == 40) {
-			// 	  /*If the arrow DOWN key is pressed,
-			// 	  increase the currentFocus variable:*/
-			// 	  currentFocus++;
-			// 	  /*and and make the current item more visible:*/
-			// 	  addActive(x);
-			// 	} else if (e.keyCode == 38) { //up
-			// 	  /*If the arrow UP key is pressed,
-			// 	  decrease the currentFocus variable:*/
-			// 	  currentFocus--;
-			// 	  /*and and make the current item more visible:*/
-			// 	  addActive(x);
-			// 	} else if (e.keyCode == 13) {
-			// 	  /*If the ENTER key is pressed, prevent the form from being submitted,*/
-			// 	  e.preventDefault();
-			// 	  if (currentFocus > -1) {
-			// 		/*and simulate a click on the "active" item:*/
-			// 		if (x) x[currentFocus].click();
-			// 	  }
-			// 	}
-			// });
-			// function addActive(x) {
-			//   /*a function to classify an item as "active":*/
-			//   if (!x) return false;
-			//   /*start by removing the "active" class on all items:*/
-			//   removeActive(x);
-			//   if (currentFocus >= x.length) currentFocus = 0;
-			//   if (currentFocus < 0) currentFocus = (x.length - 1);
-			//   /*add class "autocomplete-active":*/
-			//   x[currentFocus].classList.add("autocomplete-active");
-			// }
-			// function removeActive(x) {
-			//   /*a function to remove the "active" class from all autocomplete items:*/
-			//   for (var i = 0; i < x.length; i++) {
-			// 	x[i].classList.remove("autocomplete-active");
-			//   }
-			// }
 			// function closeAllLists(elmnt) {
 			//   /*close all autocomplete lists in the document,
 			//   except the one passed as an argument:*/
@@ -208,7 +158,7 @@ class ISearch extends HTMLElement {
 		   autocomplete(document.getElementById("myInput"), ["initial"]);
 		
 	
-});
+
 }}; // end constructor
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
