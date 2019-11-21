@@ -55,7 +55,7 @@
 			"parameters": [],
 			"body": "return this.selectedText;"
 		},
-		"getData": {
+		"setData": {
 			"returnType": "string",
 			"description": "Returns the data as list",
 			"parameters":[ {
@@ -64,6 +64,12 @@
 				"description": "list to suggest"
 			}],
 		"body": "this.sdata = dataRes "
+		},
+		"getData":{
+			"returnType": "string",
+			"description": "Returns list - check",
+			"parameters": [],
+			"body": "return this.sdata;"
 		}
 	},
 	"events": {
