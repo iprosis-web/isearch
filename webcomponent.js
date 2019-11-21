@@ -58,7 +58,7 @@
 		  <div class="autocomplete" style="width:300px;">
 			<input id="myInput" type="text" name="myCountry" placeholder="">
 		  </div>
-		  <input type="button">
+		  <input type="submit">
 		</form>
 	`;
 
@@ -70,15 +70,19 @@ class ISearch extends HTMLElement {
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		
 		this.setData = function(result){
-			var data = [];
-			var x = "";
-			result.forEach(function(element) {
-				if (element != ","){
-					x = x + element;
-				} else {
-				data.push(x);	
-				x= ""; }
-			});
+				var data = [];
+				var x = "";
+				var res = result.split(',');
+				console.log('%c ANNA '+res, "background: blue; color: white; padding-left:10px;");
+				for (var i = 0; i < res.length; i++) {
+					console.log(i);
+					console.log(res[i]);
+					if (res[i] != ",") {
+						x = x + element;
+					} else {
+						data.push(x);	
+						x= ""; }
+				};
 			var index = 0;
 			data.forEach(function(element) {
 				sdata[index] = element;
@@ -90,10 +94,9 @@ class ISearch extends HTMLElement {
 			return sdata;
 		};
 
+
+
 }}; // end constructor
-
-
-
 
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
