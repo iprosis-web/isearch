@@ -58,8 +58,12 @@
 		"getData": {
 			"returnType": "string",
 			"description": "Returns the data as list",
-			"parameters": [],
-			"body": "return this.sdata;"
+			"parameters":[ {
+				"name": "dataRes",
+				"type": "string",
+				"description": "list to suggest"
+			}],
+		"body": "this.sdata = dataRes "
 		}
 	},
 	"events": {
