@@ -56,7 +56,7 @@
 		</style>
 		<form autocomplete="off" id="myForm">
 		  <div class="autocomplete" style="width:300px;">
-			<input id="myInput" type="text" name="myCountry" placeholder="">
+			<input id="myInput" type="text" name="myCountry" value="" placeholder="">
 		  </div>
 		  <input type="submit">
 		</form>
