@@ -62,7 +62,7 @@
 				"type": "string",
 				"description": "list to suggest"
 			}],
-		"body": "this.sdata = dataRes "
+		"body": "this.sdata = dataRes;"
 		},
 		"getData":{
 			"returnType": "string",

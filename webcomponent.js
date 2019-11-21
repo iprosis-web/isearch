@@ -46,15 +46,15 @@ class ISearch extends HTMLElement {
 		this.setData = function(result){
 			var data = [];
 			var x = "";
-			// result.forEach(function(element) {
-			// 	x = x + element;
-				// console.log("x1");
-				// if (element === ","){
-				// 	data.push(x);
-				// 	console.log("x2");
-				// 	x= ""; }
-				// console.log("x3");
-//			});
+			result.forEach(function(element) {
+				x = x + element;
+				console.log("x1");
+				if (element === ","){
+					data.push(x);
+					console.log("x2");
+					x= ""; }
+				console.log("x3");
+			});
 		
 			// var oModel = new sap.ui.model.json.JSONModel(data);
 			// var oTemplate = this.getTemplate();
