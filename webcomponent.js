@@ -1,65 +1,95 @@
 (function()  {
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
-		<style>
-		* {
-		  box-sizing: border-box;
-		}
-		
-		.autocomplete {
-		  /*the container must be positioned relative:*/
-		  position: relative;
-		  display: inline-block;
-		}
-		
-		input {
-		  border: 1px solid transparent;
-		  background-color: #f1f1f1;
-		  padding: 10px;
-		  font-size: 16px;
-		}
-		
-		input[type=text] {
-		  background-color: #f1f1f1;
-		  width: 100%;
-		}
-		
-		input[type=submit] {
-		  background-color: DodgerBlue;
-		  color: #fff;
-		  cursor: pointer;
-		}
-		
-		.autocomplete-items {
-		  position: absolute;
-		  border: 1px solid #d4d4d4;
-		  border-bottom: none;
-		  border-top: none;
-		  z-index: 99;
-		  /*position the autocomplete items to be the same width as the container:*/
-		  top: 100%;
-		  left: 0;
-		  right: 0;
-		}
-		
-		.autocomplete-items div {
-		  padding: 10px;
-		  cursor: pointer;
-		  background-color: #fff; 
-		  border-bottom: 1px solid #d4d4d4; 
-		}
-		
-		.autocomplete-items div:hover {
-		  /*when hovering an item:*/
-		  background-color: #e9e9e9; 
-		}
-		</style>
-		<form autocomplete="off" id="myForm">
-		  <div class="autocomplete" style="width:300px;">
-			<input id="myInput" type="text" name="myCountry" placeholder="">
-		  </div>
-		  <input type="submit">
-		</form>
+	body{background-color:#34495e;}
+	ul
+	{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.selected
+	{
+		background: #3498DB;
+		padding-bottom: 8px;
+		color: #fff;
+	}
+	#quickSearchDiv
+	{
+		background-color: #fff;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		width: 250px;
+		display:none; 
+		margin-top:1px; 
+		border: 1px solid #CCC; 
+		min-height:0px;
+		text-align:left;
+		z-index:999;
+		position: relative;
+	}
+	#quickSearchDiv ul li
+	{
+		font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+		margin: 0;
+		padding: 0;
+		font-variant: normal;
+		color: #000;
+	}
+	#quickSearchDiv ul li a
+	{
+		font-size: 11px;
+		border-bottom: 1px solid #F7F7F7;
+		color: #000;
+		display: block;
+		margin: 0;
+		padding: 5px 8px;
+		text-decoration: none;
+		min-height: 20px;
+	}
+	#quickSearchDiv ul li a:hover
+	{
+		background: #1b9bff;
+		padding-bottom: 8px;
+		color: #fff;
+	}
+	#quickSearchDiv ul li.selected a { color: #fff; }
+	#autocomplete
+	{
+		width: 250px;
+		height:25px;
+		padding-left:2px;
+		padding-right:2px;
+		background-color: #34495e;
+		color: #fff;
+		line-height: 100%;
+		font-size: 14px;
+		font-family: Tahoma, Geneva, sans-serif;
+		border:1px solid #223444;
+		font-variant: small-caps;
+		-webkit-appearance: none;
+		-webkit-box-sizing: content-box;
+		outline:none;
+		padding-top:3px;
+	}
+	input[type="search"]::-webkit-search-decoration,
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-results-button,
+	input[type="search"]::-webkit-search-results-decoration 
+	{
+		display: none;
+	}
+	
+	<div id="quickSearchContainer" style="float:left; width: 300px;">
+	<input type="search" id="autocomplete">
+	<div id="quickSearchDiv">
+		<ul id="quickSearch"></ul>	
+	</div>
+</div>
+<div  id="selection" style="display:none; color: #fff; float:left;">
+	Selected : <span id="text"></span>
+</div>
 	`;
 
 class ISearch extends HTMLElement {
@@ -89,68 +119,99 @@ class ISearch extends HTMLElement {
 		this.getData = function(){
 			return sdata;
 		};
-		function autocomplete(inp, arr) {
-			/*the autocomplete function takes two arguments,
-			the text field element and an array of possible autocompleted values:*/
-			var currentFocus;
-			/*execute a function when someone writes in the text field:*/
-			inp.addEventListener("input", function(e) {
-				var a, b, i, val = this.value;
-				/*close any already open lists of autocompleted values*/
-				closeAllLists();
-				if (!val) { return false;}
-				currentFocus = -1;
-				/*create a DIV element that will contain the items (values):*/
-				a = document.createElement("DIV");
-				a.setAttribute("id", this.id + "autocomplete-list");
-				a.setAttribute("class", "autocomplete-items");
-				/*append the DIV element as a child of the autocomplete container:*/
-				this.parentNode.appendChild(a);
-				/*for each item in the array...*/
-				for (i = 0; i < arr.length; i++) {
-				  /*check if the item starts with the same letters as the text field value:*/
-				  if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-					/*create a DIV element for each matching element:*/
-					b = document.createElement("DIV");
-					/*make the matching letters bold:*/
-					b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-					b.innerHTML += arr[i].substr(val.length);
-					/*insert a input field that will hold the current array item's value:*/
-					b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-					/*execute a function when someone clicks on the item value (DIV element):*/
-					b.addEventListener("click", function(e) {
-						/*insert the value for the autocomplete text field:*/
-						inp.value = this.getElementsByTagName("input")[0].value;
-						document.getElementById("myForm").submit();
-						/*close the list of autocompleted values,
-						(or any other open lists of autocompleted values:*/
-						closeAllLists();
-					});
-					a.appendChild(b);
-				  }
-				}
-			});
-			function closeAllLists(elmnt) {
-			  /*close all autocomplete lists in the document,
-			  except the one passed as an argument:*/
-			  var x = document.getElementsByClassName("autocomplete-items");
-			  for (var i = 0; i < x.length; i++) {
-				if (elmnt != x[i] && elmnt != inp) {
-				  x[i].parentNode.removeChild(x[i]);
-				}
-			  }
-			}
-			/*execute a function when someone clicks in the document:*/
-			document.addEventListener("click", function (e) {
-				closeAllLists(e.target);
-			});
-		  }
-		  
-		  /*An array containing all the country names in the world:*/
-		  var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
-		  
-		  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-		  autocomplete(document.getElementById("myInput"), countries);
+		$(document).ready(function () {
+
+            var delay = (function () {
+                var timer = 0;
+                return function (callback, ms) {
+                    clearTimeout(timer);
+                    timer = setTimeout(callback, ms);
+                };
+            })();
+            var xml = "<menuitems> <menu data='RUSSIA'/> <menu data='ENGLAND'/> <menu data='USA'/> <menu data='INDIA'/> </menuitems>",
+            xmlMenu = $.parseXML(xml);
+
+            $("#autocomplete").bind('keyup focus', function (e) {
+                //return if up/down/return key
+                if (e.keyCode == 40 || e.keyCode == 38 || e.keyCode == 13) {
+                    e.preventDefault();
+                    return;
+                }
+                delay(function () {
+                    $("#quickSearch").empty();
+                    $("#quickSearchDiv").show();
+                    //non-case-sensitive search item
+                    var regex = new RegExp($("#autocomplete").val(), "i");
+                    var i = 0;
+                    $(xmlMenu).find('menu').filter(function () { return $(this).attr('data').match(regex); }).each(function () {
+                        i++;
+                        if (i > 5) return false;
+
+                        type = "";
+                        $("#quickSearch").append("<li><a tabindex='-1' href='javascript:void(0);' onclick=dispSelection('" + $(this).attr("data") + "')>" + $(this).attr("data") + "</a></li>");
+                    });
+                    //add class to the first<li>
+                    $("#quickSearch li:first").addClass('selected');
+
+                }, 750);
+            });
+
+            // keypress on the search textbox
+            $("#autocomplete").keydown(function (e) {
+                var selected = $("#quickSearch .selected");
+                if (e.keyCode == 13) { // on select
+                    e.preventDefault();
+                    if ($("#quickSearch li").length > 0) {
+                        dispSelection(selected.find('a').html());
+                    }
+                }
+                if (e.keyCode == 38) { // up
+                    $("#quickSearch .selected").removeClass("selected");
+                    if (selected.prev().length == 0) {
+                        $("#quickSearch li:last").addClass("selected");
+                    } else {
+                        selected.prev().addClass("selected");
+                    }
+                }
+                if (e.keyCode == 40) { // down
+                    var selected = $("#quickSearch .selected");
+                    $("#quickSearch .selected").removeClass("selected");
+                    if (selected.next().length == 0) {
+                        $("#quickSearch li:first").addClass("selected");
+                    } else {
+                        selected.next().addClass("selected");
+                    }
+                }
+            });
+            $("#autocomplete").focusout(function() {
+                if(autocText != $("#autocomplete").val())
+                {
+                    document.getElementById("autocomplete").value = "";
+                    document.getElementById("selection").style.display = "none";
+                    autocText = "";
+                }
+            });
+            $("body").click(function () {
+                $("#quickSearchDiv").hide();
+            });
+            $("#quickSearchContainer").click(function (event) {
+                event.stopPropagation();
+            });
+        });
+        autocText = null;
+        function dispSelection(text)
+        {
+            $("#quickSearchDiv").hide();
+            document.getElementById("selection").style.display = "block";
+            document.getElementById("text").innerHTML = text;
+            document.getElementById("autocomplete").value = text;
+            autocText = text;
+        }
+$(document).ready(function () {
+$("#autocomplete").focus();
+
+});
+
 }}; // end constructor
 
 
