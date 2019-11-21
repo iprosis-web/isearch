@@ -45,7 +45,7 @@ class ISearch extends HTMLElement {
 		
 		this.setData = function(result){
 			var data = [];
-			x="";
+			var x="";
 			result.forEach(function(element) {
 				x=x+element;
 				console.log(""+x);
