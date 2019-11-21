@@ -65,7 +65,7 @@
 		"body": "this.sdata = dataRes "
 		},
 		"getData":{
-			"returnType": "string",
+			"returnType": "string array",
 			"description": "Returns list - check",
 			"parameters": [],
 			"body": "return this.sdata;"

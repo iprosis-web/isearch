@@ -48,7 +48,7 @@ class ISearch extends HTMLElement {
 		var that = this;
 		var Data = null;
 		this.oSearchField = null;
-	
+		var sData=[];
 		
 		this.init = function() {
 			
@@ -176,11 +176,14 @@ class ISearch extends HTMLElement {
 			x="";
 			result.forEach(function(element) {
 				x=x+element;
-				if (element == ","){
+				console.log(""+x);
+				if (element === ","){
 					data.push(x);
+					console.log(""+data);
 					x= "";
 				}
-				
+				data = sdata;
+				console.log(""+sdata);
 			});
 		
 			// var oModel = new sap.ui.model.json.JSONModel(data);
@@ -190,7 +193,7 @@ class ISearch extends HTMLElement {
 			
 		};
 		this.getData = function(){
-			return data;
+			return sdata;
 		};
 		
 		this.insertData = function() {
