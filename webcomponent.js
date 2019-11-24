@@ -110,7 +110,7 @@ class ISearch extends HTMLElement {
 							var filters = [];
 							if(value !== "")
 								{
-								 filters = that.getFilters(value);		
+								 	filters = that.getFilters(value);		
 								}else{
 									filters = that.getFilters("999999iprosis");		
 								}
@@ -166,7 +166,7 @@ class ISearch extends HTMLElement {
 					 oTemplate = new sap.m.SuggestionItem({
 						text: "{text}",
 						key: "{key}",
-						description:"{key}"
+					//	description:"{key}" //simlify
 					 });
 				}else{
 					oTemplate = new sap.m.SuggestionItem({
@@ -176,7 +176,6 @@ class ISearch extends HTMLElement {
 			}
 			return oTemplate;
 		};
-		
 		
 		this.getData = function(result){
 			var data = [];

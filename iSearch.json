@@ -37,7 +37,7 @@
 			"type": "string",
 			"description": "Text result set"			
 		},
-		"sdata":{
+		"data":{
 			"type": "string",
 			"description": "data"			
 		}
@@ -55,7 +55,7 @@
 			"parameters": [],
 			"body": "return this.selectedText;"
 		},
-		"setData": {
+		"getData": {
 			"description": "Returns the data as list",
 			"parameters":[ {
 				"name": "dataRes",
@@ -64,7 +64,7 @@
 			}],
 		"body": "this.sdata = dataRes;"
 		},
-		"getData":{
+		"setData":{
 			"returnType": "string",
 			"description": "Returns list - check",
 			"parameters": [],
