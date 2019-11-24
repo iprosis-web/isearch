@@ -39,8 +39,8 @@ class ISearch extends HTMLElement {
 
 	constructor() {
 		super();
-		this._shadowRoot = this.attachShadow({mode: 'open'});
-		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+		//this._shadowRoot = this.attachShadow({mode: 'open'});
+		//this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		var dataResultSet = null;
 		var isEnabled = null;
 		var placeHolder = null;
