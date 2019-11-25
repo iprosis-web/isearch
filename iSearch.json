@@ -15,7 +15,8 @@
 			"tag": "com-iprosis-sample-search",
 			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
 			"integrity": "",
-			"ignoreIntegrity": true
+			"ignoreIntegrity": true,
+			"imports": ["ResultSet", "DataSource","InputField"]
 		}
 
 	],
