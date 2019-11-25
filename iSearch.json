@@ -38,7 +38,7 @@
 			"description": "Text result set"			
 		},
 		"sdata":{
-			"type": "[string]",
+			"type": "string",
 			"description": "data"			
 		}
 	},
@@ -59,13 +59,13 @@
 			"description": "Returns the data as list",
 			"parameters":[ {
 				"name": "dataRes",
-				"type": "[string]",
+				"type": "string",
 				"description": "list to suggest"
 			}],
 		"body": "this.sdata = dataRes;"
 		},
 		"setData":{
-			"returnType": "[string]",
+			"returnType": "string",
 			"description": "Returns list - check",
 			"parameters": [],
 			"body": "return this.sdata;"

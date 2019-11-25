@@ -88,7 +88,7 @@ class ISearch extends HTMLElement {
 								if(item)
 									{
 										text = item.getText();
-										key = item.getKey();
+										// key = item.getKey();
 									}else if (oEvent.getParameter("query") === selectedText)
 										{
 										 	isFire = false;
@@ -97,9 +97,9 @@ class ISearch extends HTMLElement {
 				//		oEvent.getParameter("query");
 							if (isFire)
 								{
-									selectedValue = key;
+									//selectedValue = key;
 									selectedText = text;
-						            that.firePropertiesChanged(["SelectedValue"]);
+						            //that.firePropertiesChanged(["SelectedValue"]);
 						            that.firePropertiesChanged(["SelectedText"]);
 						            that.fireEvent("onSearch");  
 								}
@@ -147,16 +147,16 @@ class ISearch extends HTMLElement {
 			oFilterText = new sap.ui.model.Filter("text", function(sText) {
 				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
 			});
-			oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
-				 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-				 });
+			// oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
+			// 	 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
+			//	 });
 			
-			if (displayKey === true)
-				{
-					filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
-				}else{
+			// if (displayKey === true)
+			// 	{
+					//filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
+			//	}else{
 					filters = [	new sap.ui.model.Filter([oFilterText], false)];
-				}
+			//	}
 			
 			return filters
 		};
@@ -180,12 +180,13 @@ class ISearch extends HTMLElement {
 		this.getData = function(result){
 			var data = [];
 			var x = result;
-			var obj = {};
+			// var obj = {};
 			result.forEach(function(element) {
-				obj = {};
-				obj.text = element.text;
-				obj.key = element.key;
-				data.push(obj);
+				// obj = {};
+				// obj.text = element.text;
+				// obj.key = element.key;
+				// data.push(obj);
+				data.push(element);
 			});
 		
 			var oModel = new sap.ui.model.json.JSONModel(data);
