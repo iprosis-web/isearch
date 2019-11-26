@@ -1,5 +1,3 @@
-
-
 (function()  {
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
@@ -16,6 +14,9 @@
 		width: 100%;
 		
 	}
+	.tfbutton2{
+		icon: "https://cdn3.vectorstock.com/i/1000x1000/62/77/lupe-icon-search-design-graphic-vector-10066277.jpg"
+	}
 	.autocomplete-suggestion {
 		overflow: hidden;
 		padding: 2px 5px;
@@ -29,11 +30,9 @@
 	  background:#F0F0F0;
 	}
 	</style>
-	<form>
-	<input type="text" id="query" class="text-field">
-	<button>Search</button>
-  </form>
-	
+	<div>
+	<input type="submit" value=">" class="tfbutton2"><input type="text" id="query" class="text-field valid" autocomplete="on" placeholder="">
+	</div>
 	`;
 
 class ISearch extends HTMLElement {
@@ -42,16 +41,22 @@ class ISearch extends HTMLElement {
 		super();
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		this._shadowRoot.getElementById("query").addEventListener("keypress", this._submit.bind(this));
-		this.addEventListener("click", event => {
-			var event = new Event("onSearch");
-			this.dispatchEvent(event);
-		});
+		var dataResultSet = null;
+		var isEnabled = null;
+		var placeHolder = null;
+		var isSearchButton = null;
+		var isSuggestions = null;
+		var maxLength = null;
+		var selectedDimension = null;
+		
+		var displayKey = null;
+		var selectedValue = null;
+		var selectedText = null;
+		var reload = false;
 		var that = this;
-		this._sdata = [];
-		this.selectedValue = "";
-
-////////////////////////////////////////////////
+		var Data = null;
+		this.oSearchField = null;
+		
 		this.init = function() {
 			
 			if( window.sap && sap.zen && sap.zen.designmode)
@@ -119,52 +124,200 @@ class ISearch extends HTMLElement {
 			this._alive = true;
 			}
 		};
-
-
-		////////////////////////////////////
-		this.insertData = function() {
-
-			if (_sdata)
-				{
-				//var dim = _sdata.toUpperCase();
-				//	that.callZTLFunction("getMembers", that.getData, dim);
-				}		
-		};// end insert data to list
-
-	} // end constructor
-
-	_submit(e) {
-		e.preventDefault();
-		this.dispatchEvent(new CustomEvent("suggestions", {
-			
-			detail: {
-					 
-					properties: {
-						/////////
-					
-					}
-				}	
-		}
-		));
-	} //end _submit
 		
-	
-	set data(_sdata) {
-		var data = [];
+		this.afterUpdate = function() {
+			that.oSearchField.setEnabled(isEnabled);
+			that.oSearchField.setPlaceholder(placeHolder);
+			that.oSearchField.setEnableSuggestions(isSuggestions);
+			that.oSearchField.setMaxLength(maxLength);
+			that.oSearchField.setShowSearchButton(isSearchButton);
+
+			if (dataResultSet){
+				if (reload){	
+					return;
+				} else {
+					this.insertData();
+					reload = true;
+				}
+			}
+			
+		};
+		this.getFilters = function(value){
+			var filters = [];
+			oFilterText = new sap.ui.model.Filter("text", function(sText) {
+				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
+			});
+			oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
+				 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
+				 });
+			
+			if (displayKey === true)
+				{
+					filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
+				}else{
+					filters = [	new sap.ui.model.Filter([oFilterText], false)];
+				}
+			
+			return filters
+		};
+		this.getTemplate = function(){
+			if (displayKey === true)
+				{
+					 oTemplate = new sap.m.SuggestionItem({
+						text: "{text}",
+						key: "{key}",
+						description:"{key}"
+					 });
+				}else{
+					oTemplate = new sap.m.SuggestionItem({
+					text: "{text}",
+					key: "{key}"
+				});
+			}
+			return oTemplate;
+		};
+		
+		
+		this.getData = function(result){
+			var data = [];
+			var x = result;
+			var obj = {};
 			result.forEach(function(element) {
-				data.push(element);
+				obj = {};
+				obj.text = element.text;
+				obj.key = element.key;
+				data.push(obj);
 			});
 		
 			var oModel = new sap.ui.model.json.JSONModel(data);
+			var oTemplate = this.getTemplate();
 			that.oSearchField.setModel(oModel);
-			that.oSearchField.bindAggregation("suggestionItems", "/", tmpl);
-	} //end set data
+			that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
+			
+		}
+		
+		this.insertData = function() {
 
-	get data() {
-		return this._sdata;
-	} // end get data
+			if (selectedDimension)
+				{
+				var dim = selectedDimension.toUpperCase();
+					that.callZTLFunction("getMembers", that.getData, dim);
+				}
+					
+//			data = dataResultSet.dimensions[0].members;
+//			oModel.setSizeLimit(maxItems);			
+		};
+		
+		this.DataResultSet = function(value) {
+			if(value===undefined) {
+				return dataResultSet;
+			} else {
+				//Clear Auto
+				if (reload) {
+					that.oSearchField.removeAllSuggestionItems();
+					that.oSearchField.setValue("");
+					reload = false;
+				}
+				dataResultSet = value;
+				return this;
+			};
+		};	
+		
+		this.DisplayKey = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return displayKey;
+			} else {
+				Reload = false;
+				displayKey = value;
+				return this;
+			};
+		};
 
-} //end Class
+		this.IsEnabled = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return isEnabled;
+			} else {
+				Reload = false;
+				isEnabled = value;
+				return this;
+			};
+		};
+		
+		this.PlaceHolder = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return placeHolder;
+			} else {
+				Reload = false;
+				placeHolder = value;
+				return this;
+			};
+		};
+		
+		this.IsSearchButton = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return isSearchButton;
+			} else {
+				Reload = false;
+				isSearchButton = value;
+				return this;
+			};
+		};
+		this.MaxLength = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return maxLength;
+			} else {
+				Reload = false;
+				maxLength = value;
+				return this;
+			};
+		};
+		this.SelectedDimension = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return selectedDimension;
+			} else {
+				Reload = false;
+				selectedDimension = value;
+				return this;
+			};
+		};
+		
+		
+		this.IsSuggestions = function(value) {
+			if(value===undefined) {
+				Reload = false;
+				return isSuggestions;
+			} else {
+				Reload = false;
+				isSuggestions = value;
+				return this;
+			};
+		};
+	
+		this.SelectedValue = function(value) {
+			if(value===undefined) {
+				return selectedValue;
+			} else {
+				selectedValue = value;
+				return this;
+			};
+		};
+		
+		this.SelectedText = function(value) {
+			if(value===undefined) {
+				return selectedText;
+			} else {
+				selectedText = value;
+				return this;
+			};
+		};	
+		
+	}};
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
-	})(); // EOF
+	})();
