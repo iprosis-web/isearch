@@ -1,6 +1,14 @@
 (function()  {
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+	<script id="sap-ui-bootstrap"
+	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_belize"
+	data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
+	data-sap-ui-resourceroots='{"Quickstart": "./"}'
+	data-sap-ui-async="true">
+	</script>
 	`;
 
 class ISearch extends HTMLElement {
