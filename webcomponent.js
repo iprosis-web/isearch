@@ -34,78 +34,72 @@ class ISearch extends HTMLElement {
 		var Data = null;
 		this.oSearchField = null;
 
-		
-	
-			var that = this;
-			
-			if( window.sap && sap.zen && sap.zen.designmode)
-				{
-					var x = "dd";
-				}
-			
-			
-			if (this._alive){
-				console.log('5');
-				return;
-			} else {
-			
-				console.log('10');
-				var currentDiv = "DIV_" + $(this).attr('id');
-				console.log('20');
-				var currentSf = "SF_" + $(this).attr('id');
-				
-				// Create Search Field control and load data
-				that.oSearchField = new sap.m.SearchField(currentSf, {
-					enableSuggestions: true,
-					search: function(oEvent) {
-						console.log("Im here");
-						var text = "";
-						var key = "";
-						var isFire = true;
-						if (isSuggestions === false)
-							{
-								text = oEvent.getParameter("query");
-								key = text;
-							}else{
-								var item = oEvent.getParameter("suggestionItem");
-								if(item)
-									{
-										text = item.getText();
-										key = item.getKey();
-									}else if (oEvent.getParameter("query") === selectedText)
-										{
-										 	isFire = false;
-										}
-							}
-				//		oEvent.getParameter("query");
-							if (isFire)
-								{
-									selectedValue = key;
-									selectedText = text;
-						            that.firePropertiesChanged(["SelectedValue"]);
-						            that.firePropertiesChanged(["SelectedText"]);
-						            that.fireEvent("onSearch");  
-								}
-					},
+		var that = this;		
+		if (window.sap && sap.zen && sap.zen.designmode) {
+			var x = "dd";
+		}
 
-					suggest: function(oEvent) {
-							var value =oEvent.getParameter("suggestValue");
-							var filters = [];
-							if(value !== "")
-								{
-								 filters = that.getFilters(value);		
-								}else{
-									filters = that.getFilters("999999iprosis");		
-								}
-							that.oSearchField.getBinding("suggestionItems").filter(filters);
-							that.oSearchField.suggest();
+
+		console.log("This :");
+		console.log(this);
+
+		if (this._alive) {
+			console.log('5');
+			return;
+		} else {
+
+			console.log('10');
+			var currentDiv = "DIV_" + $(this).attr('id');
+			console.log('20');
+			var currentSf = "SF_" + $(this).attr('id');
+
+			// Create Search Field control and load data
+			that.oSearchField = new sap.m.SearchField(currentSf, {
+				enableSuggestions: true,
+				search: function (oEvent) {
+					console.log("Im here");
+					var text = "";
+					var key = "";
+					var isFire = true;
+					if (isSuggestions === false) {
+						text = oEvent.getParameter("query");
+						key = text;
+					} else {
+						var item = oEvent.getParameter("suggestionItem");
+						if (item) {
+							text = item.getText();
+							key = item.getKey();
+						} else if (oEvent.getParameter("query") === selectedText) {
+							isFire = false;
+						}
 					}
-				});
+					//		oEvent.getParameter("query");
+					if (isFire) {
+						selectedValue = key;
+						selectedText = text;
+						that.firePropertiesChanged(["SelectedValue"]);
+						that.firePropertiesChanged(["SelectedText"]);
+						that.fireEvent("onSearch");
+					}
+				},
+
+				suggest: function (oEvent) {
+					var value = oEvent.getParameter("suggestValue");
+					var filters = [];
+					if (value !== "") {
+						filters = that.getFilters(value);
+					} else {
+						filters = that.getFilters("999999iprosis");
+					}
+					that.oSearchField.getBinding("suggestionItems").filter(filters);
+					that.oSearchField.suggest();
+				}
+			});
 
 			$(this).html('<div id="' + currentDiv + '"> ');
 			that.oSearchField.placeAt(currentDiv);
 			this._alive = true;
-			}
+		}
 	};
 		
 // 	afterUpdate() {
