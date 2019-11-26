@@ -12,7 +12,7 @@
 	</script>
 
 	<div id='xyz'>
-	<input type="submit" value=">" class="tfbutton2"><input type="text" id="query" class="text-field valid" autocomplete="on" placeholder="">
+	
 	</div>
 
 
@@ -82,11 +82,7 @@ class ISearch extends HTMLElement {
 				that.oSearchField.suggest();
 			}
 		});
-		
-		// let divContainer = document.createElement('div');
-		// divContainer.id = "xyz";
-		// this.appendChild(divContainer)
-
+	
 		let sfContainer = this.shadowRoot.getElementById('xyz');
 
 		this.oSearchField.placeAt(sfContainer);
