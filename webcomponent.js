@@ -50,9 +50,9 @@ class ISearch extends HTMLElement {
 			} else {
 			
 				console.log('10');
-				currentDiv = "DIV_" + this.$().attr('id');
+				currentDiv = "DIV_77";
 				console.log('20');
-				var currentSf = "SF_" + this.$().attr('id');
+				var currentSf = "SF_88";// + this.$().attr('id');
 				
 				// Create Search Field control and load data
 				that.oSearchField = new sap.m.SearchField(currentSf, {
@@ -102,7 +102,7 @@ class ISearch extends HTMLElement {
 					}
 				});
 
-			this.$().html('<div id="' + currentDiv + '"> ');
+			$(this).html('<div id="' + currentDiv + '"> ');
 			that.oSearchField.placeAt(currentDiv);
 			this._alive = true;
 			}
