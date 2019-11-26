@@ -42,6 +42,11 @@
 				// Create Search Field control and load data
 				this.oSearchField = new sap.m.SearchField(currentSf, {
 					//enableSuggestions: true,
+					tooltip: 'Search for Products',
+
+					liveChange: function() {
+						console.log('LIveeeeee ');
+					},
 					search: function(oEvent) {
 						console.log('Im here');
 						// var text = '';
