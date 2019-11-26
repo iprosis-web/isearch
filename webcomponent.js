@@ -49,9 +49,9 @@ class ISearch extends HTMLElement {
 		} else {
 
 			console.log('10');
-			var currentDiv = "DIV_" + this.id;
+			var currentDiv = "DIV_" + Math.floor(Math.random() * 1000);
 			console.log('20');
-			var currentSf = "SF_" + this.id;
+			var currentSf = "SF_" + Math.floor(Math.random() * 1000);
 
 			// Create Search Field control and load data
 			that.oSearchField = new sap.m.SearchField(currentSf, {
