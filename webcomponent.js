@@ -94,10 +94,11 @@ class ISearch extends HTMLElement {
 				}
 			});
 
-			this.innerHTML = '<div id="' + currentDiv + '"> ';
+			//this.innerHTML = '<div id="' + currentDiv + '"> ';
 			console.log("Seaarch  field :");
 			console.log(this.oSearchField);
-			//this.oSearchField.placeAt(currentDiv);
+			this.id = currentDiv;
+			this.oSearchField.placeAt(this.id);
 			this._alive = true;
 		}
 	};
