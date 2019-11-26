@@ -86,7 +86,10 @@ class ISearch extends HTMLElement {
 		// let divContainer = document.createElement('div');
 		// divContainer.id = "xyz";
 		// this.appendChild(divContainer)
-		//this.oSearchField.placeAt("xyz");
+
+		let sfContainer = this.shadowRoot.getElementById('xyz');
+
+		this.oSearchField.placeAt(sfContainer);
 
 		this._alive = true;
 		}
