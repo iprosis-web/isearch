@@ -50,7 +50,7 @@ class ISearch extends HTMLElement {
 			} else {
 			
 				console.log('10');
-				currentDiv = "DIV_77";
+				var currentDiv = "DIV_77";
 				console.log('20');
 				var currentSf = "SF_88";// + this.$().attr('id');
 				
