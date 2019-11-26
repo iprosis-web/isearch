@@ -18,102 +18,70 @@ class ISearch extends HTMLElement {
 
 	constructor() {
 		super();
-		console.log("In constructor");
-		this._shadowRoot = this.attachShadow({mode: 'open'});
-		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-
-		console.log("content :");
-		console.log(tmpl.content.cloneNode(true));
-
-		var dataResultSet = null;
-		var isEnabled = null;
-		var placeHolder = null;
-		var isSearchButton = null;
+	
 		var isSuggestions = null;
-		var maxLength = null;
-		var selectedDimension = null;
-		
-		var displayKey = null;
-		var selectedValue = null;
 		var selectedText = null;
-		var reload = false;
-		var Data = null;
 		this.oSearchField = null;
-		
+
 		if (window.sap && sap.zen && sap.zen.designmode) {
 			var x = "dd";
 		}
 
-
-		console.log("This :");
-		console.log(this);
-
 		if (this._alive) {
-			console.log('5');
 			return;
 		} else {
+	
+		var currentSf = "SF_" + Math.floor(Math.random() * 1000);
 
-			console.log('10');
-			var currentDiv = "DIV_" + Math.floor(Math.random() * 1000);
-			console.log('20');
-			var currentSf = "SF_" + Math.floor(Math.random() * 1000);
-
-			// Create Search Field control and load data
-			this.oSearchField = new sap.m.SearchField(currentSf, {
-				enableSuggestions: true,
-				search: function (oEvent) {
-					console.log("Im here");
-					var text = "";
-					var key = "";
-					var isFire = true;
-					if (isSuggestions === false) {
-						text = oEvent.getParameter("query");
-						key = text;
-					} else {
-						var item = oEvent.getParameter("suggestionItem");
-						if (item) {
-							text = item.getText();
-							key = item.getKey();
-						} else if (oEvent.getParameter("query") === selectedText) {
-							isFire = false;
-						}
+		// Create Search Field control and load data
+		this.oSearchField = new sap.m.SearchField(currentSf, {
+			enableSuggestions: true,
+			search: function (oEvent) {
+				console.log("Im here");
+				var text = "";
+				var key = "";
+				var isFire = true;
+				if (isSuggestions === false) {
+					text = oEvent.getParameter("query");
+					key = text;
+				} else {
+					var item = oEvent.getParameter("suggestionItem");
+					if (item) {
+						text = item.getText();
+						key = item.getKey();
+					} else if (oEvent.getParameter("query") === selectedText) {
+						isFire = false;
 					}
-					//		oEvent.getParameter("query");
-					if (isFire) {
-						selectedValue = key;
-						selectedText = text;
-						that.firePropertiesChanged(["SelectedValue"]);
-						that.firePropertiesChanged(["SelectedText"]);
-						that.fireEvent("onSearch");
-					}
-				},
-
-				suggest: function (oEvent) {
-					var value = oEvent.getParameter("suggestValue");
-					var filters = [];
-					if (value !== "") {
-						filters = that.getFilters(value);
-					} else {
-						filters = that.getFilters("999999iprosis");
-					}
-					that.oSearchField.getBinding("suggestionItems").filter(filters);
-					that.oSearchField.suggest();
 				}
-			});
+				//		oEvent.getParameter("query");
+				if (isFire) {
+					selectedValue = key;
+					selectedText = text;
+					that.firePropertiesChanged(["SelectedValue"]);
+					that.firePropertiesChanged(["SelectedText"]);
+					that.fireEvent("onSearch");
+				}
+			},
 
-			//this.innerHTML = '<div id="' + currentDiv + '"> ';
-			
-			let divContainer = document.createElement('div');
-			divContainer.id = "xyz";
-			//this.oSearchField.placeAt("xyz");
-			this._shadowRoot.appendChild(divContainer);
-			console.log("Shadow root :");
-			console.log(this._shadowRoot);
-			console.log("Seaarch  field :");
-			console.log(this.oSearchField);
-			//this.id = currentDiv;
-			
-			this._alive = true;
+			suggest: function (oEvent) {
+				var value = oEvent.getParameter("suggestValue");
+				var filters = [];
+				if (value !== "") {
+					filters = that.getFilters(value);
+				} else {
+					filters = that.getFilters("999999iprosis");
+				}
+				that.oSearchField.getBinding("suggestionItems").filter(filters);
+				that.oSearchField.suggest();
+			}
+		});
+		
+		let divContainer = document.createElement('div');
+		divContainer.id = "xyz";
+		this.appendChild(divContainer)
+		this.oSearchField.placeAt("xyz");
+
+		this._alive = true;
 		}
 	};
 		
