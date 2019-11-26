@@ -105,7 +105,7 @@ class ISearch extends HTMLElement {
 			
 			let divContainer = document.createElement('div');
 			divContainer.id = "xyz";
-			this.oSearchField.placeAt("xyz");
+			//this.oSearchField.placeAt("xyz");
 			this._shadowRoot.appendChild(divContainer);
 			console.log("Shadow root :");
 			console.log(this._shadowRoot);
