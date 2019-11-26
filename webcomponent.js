@@ -2,7 +2,6 @@
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
 
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 	<script id="sap-ui-bootstrap"
 	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
 	data-sap-ui-theme="sap_belize"
@@ -11,7 +10,7 @@
 	data-sap-ui-async="true">
 	</script>
 
-	<div id='xyz'>
+	<div id='sfContainer'>
 	
 	</div>
 
@@ -83,7 +82,7 @@ class ISearch extends HTMLElement {
 			}
 		});
 	
-		let sfContainer = this.shadowRoot.getElementById('xyz');
+		let sfContainer = this.shadowRoot.getElementById('sfContainer');
 
 		this.oSearchField.placeAt(sfContainer);
 
