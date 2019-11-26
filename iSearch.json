@@ -8,6 +8,7 @@
 	"newInstancePrefix": "iSearch",
 	"icon" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
 	"version": "1.0.0",
+	"imports": ["ResultSet", "DataSource","InputField"],
 
 	"webcomponents": [
 		{
@@ -15,8 +16,8 @@
 			"tag": "com-iprosis-sample-search",
 			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
 			"integrity": "",
-			"ignoreIntegrity": true,
-			"imports": ["ResultSet", "DataSource","InputField"]
+			"ignoreIntegrity": true
+			
 		}
 
 	],
