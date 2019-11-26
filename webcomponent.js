@@ -11,6 +11,10 @@
 	data-sap-ui-async="true">
 	</script>
 
+	<div id='xyz'>
+	<input type="submit" value=">" class="tfbutton2"><input type="text" id="query" class="text-field valid" autocomplete="on" placeholder="">
+	</div>
+
 
 	`;
 
@@ -76,14 +80,15 @@ class ISearch extends HTMLElement {
 			}
 		});
 		
-		let divContainer = document.createElement('div');
-		divContainer.id = "xyz";
-		this.appendChild(divContainer)
+		// let divContainer = document.createElement('div');
+		// divContainer.id = "xyz";
+		// this.appendChild(divContainer)
 		this.oSearchField.placeAt("xyz");
 
 		this._alive = true;
 		}
 	};
+ 
 		
 // 	afterUpdate() {
 // 			that.oSearchField.setEnabled(isEnabled);
