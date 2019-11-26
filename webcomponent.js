@@ -52,7 +52,7 @@ class ISearch extends HTMLElement {
 			var currentSf = "SF_" + Math.floor(Math.random() * 1000);
 
 			// Create Search Field control and load data
-			that.oSearchField = new sap.m.SearchField(currentSf, {
+			this.oSearchField = new sap.m.SearchField(currentSf, {
 				enableSuggestions: true,
 				search: function (oEvent) {
 					console.log("Im here");
@@ -95,6 +95,8 @@ class ISearch extends HTMLElement {
 			});
 
 			this.innerHTML = '<div id="' + currentDiv + '"> ';
+			console.log("Seaarch  field :");
+			console.log(this.oSearchField);
 			//this.oSearchField.placeAt(currentDiv);
 			this._alive = true;
 		}
