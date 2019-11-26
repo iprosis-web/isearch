@@ -18,6 +18,10 @@ class ISearch extends HTMLElement {
 		console.log("In constructor");
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+
+		console.log("content :");
+		console.log(tmpl.content.cloneNode(true));
+
 		var dataResultSet = null;
 		var isEnabled = null;
 		var placeHolder = null;
