@@ -25,8 +25,10 @@ class ISearch extends HTMLElement {
 		var that = this;
 		var Data = null;
 		this.oSearchField = null;
+
 		
-		this.init = function() {
+	
+			var that = this;
 			
 			if( window.sap && sap.zen && sap.zen.designmode)
 				{
@@ -96,201 +98,202 @@ class ISearch extends HTMLElement {
 			that.oSearchField.placeAt(currentDiv);
 			this._alive = true;
 			}
-		};
+	};
 		
-		this.afterUpdate = function() {
-			that.oSearchField.setEnabled(isEnabled);
-			that.oSearchField.setPlaceholder(placeHolder);
-			that.oSearchField.setEnableSuggestions(isSuggestions);
-			that.oSearchField.setMaxLength(maxLength);
-			that.oSearchField.setShowSearchButton(isSearchButton);
+// 	afterUpdate() {
+// 			that.oSearchField.setEnabled(isEnabled);
+// 			that.oSearchField.setPlaceholder(placeHolder);
+// 			that.oSearchField.setEnableSuggestions(isSuggestions);
+// 			that.oSearchField.setMaxLength(maxLength);
+// 			that.oSearchField.setShowSearchButton(isSearchButton);
 
-			if (dataResultSet){
-				if (reload){	
-					return;
-				} else {
-					this.insertData();
-					reload = true;
-				}
-			}
+// 			if (dataResultSet){
+// 				if (reload){	
+// 					return;
+// 				} else {
+// 					this.insertData();
+// 					reload = true;
+// 				}
+// 			}
 			
-		};
-		this.getFilters = function(value){
-			var filters = [];
-			oFilterText = new sap.ui.model.Filter("text", function(sText) {
-				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-			});
-			oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
-				 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-				 });
-			
-			if (displayKey === true)
-				{
-					filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
-				}else{
-					filters = [	new sap.ui.model.Filter([oFilterText], false)];
-				}
-			
-			return filters
-		};
-		this.getTemplate = function(){
-			if (displayKey === true)
-				{
-					 oTemplate = new sap.m.SuggestionItem({
-						text: "{text}",
-						key: "{key}",
-						description:"{key}"
-					 });
-				}else{
-					oTemplate = new sap.m.SuggestionItem({
-					text: "{text}",
-					key: "{key}"
-				});
-			}
-			return oTemplate;
-		};
-		
-		
-		this.getData = function(result){
-			var data = [];
-			var x = result;
-			var obj = {};
-			result.forEach(function(element) {
-				obj = {};
-				obj.text = element.text;
-				obj.key = element.key;
-				data.push(obj);
-			});
-		
-			var oModel = new sap.ui.model.json.JSONModel(data);
-			var oTemplate = this.getTemplate();
-			that.oSearchField.setModel(oModel);
-			that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
-			
-		}
-		
-		this.insertData = function() {
-
-			if (selectedDimension)
-				{
-				var dim = selectedDimension.toUpperCase();
-					that.callZTLFunction("getMembers", that.getData, dim);
-				}
-					
-//			data = dataResultSet.dimensions[0].members;
-//			oModel.setSizeLimit(maxItems);			
-		};
-		
-		this.DataResultSet = function(value) {
-			if(value===undefined) {
-				return dataResultSet;
-			} else {
-				//Clear Auto
-				if (reload) {
-					that.oSearchField.removeAllSuggestionItems();
-					that.oSearchField.setValue("");
-					reload = false;
-				}
-				dataResultSet = value;
-				return this;
-			};
-		};	
-		
-		this.DisplayKey = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return displayKey;
-			} else {
-				Reload = false;
-				displayKey = value;
-				return this;
-			};
-		};
-
-		this.IsEnabled = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return isEnabled;
-			} else {
-				Reload = false;
-				isEnabled = value;
-				return this;
-			};
-		};
-		
-		this.PlaceHolder = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return placeHolder;
-			} else {
-				Reload = false;
-				placeHolder = value;
-				return this;
-			};
-		};
-		
-		this.IsSearchButton = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return isSearchButton;
-			} else {
-				Reload = false;
-				isSearchButton = value;
-				return this;
-			};
-		};
-		this.MaxLength = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return maxLength;
-			} else {
-				Reload = false;
-				maxLength = value;
-				return this;
-			};
-		};
-		this.SelectedDimension = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return selectedDimension;
-			} else {
-				Reload = false;
-				selectedDimension = value;
-				return this;
-			};
-		};
-		
-		
-		this.IsSuggestions = function(value) {
-			if(value===undefined) {
-				Reload = false;
-				return isSuggestions;
-			} else {
-				Reload = false;
-				isSuggestions = value;
-				return this;
-			};
-		};
+// 	};
 	
-		this.SelectedValue = function(value) {
-			if(value===undefined) {
-				return selectedValue;
-			} else {
-				selectedValue = value;
-				return this;
-			};
-		};
+// 	getFilters = function(value){
+// 			var filters = [];
+// 			oFilterText = new sap.ui.model.Filter("text", function(sText) {
+// 				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
+// 			});
+// 			oFilterDesc =  new sap.ui.model.Filter("key", function(sDes) {
+// 				 	return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
+// 				 });
+			
+// 			if (displayKey === true)
+// 				{
+// 					filters = [new sap.ui.model.Filter([oFilterText,oFilterDesc], false)];
+// 				}else{
+// 					filters = [	new sap.ui.model.Filter([oFilterText], false)];
+// 				}
+			
+// 			return filters
+// 	};
+
+// 	getTemplate = function(){
+// 			if (displayKey === true)
+// 				{
+// 					 oTemplate = new sap.m.SuggestionItem({
+// 						text: "{text}",
+// 						key: "{key}",
+// 						description:"{key}"
+// 					 });
+// 				}else{
+// 					oTemplate = new sap.m.SuggestionItem({
+// 					text: "{text}",
+// 					key: "{key}"
+// 				});
+// 			}
+// 			return oTemplate;
+// 	};
+			
+// 	getData = function(result){
+// 			var data = [];
+// 			var x = result;
+// 			var obj = {};
+// 			result.forEach(function(element) {
+// 				obj = {};
+// 				obj.text = element.text;
+// 				obj.key = element.key;
+// 				data.push(obj);
+// 			});
 		
-		this.SelectedText = function(value) {
-			if(value===undefined) {
-				return selectedText;
-			} else {
-				selectedText = value;
-				return this;
-			};
-		};	
+// 			var oModel = new sap.ui.model.json.JSONModel(data);
+// 			var oTemplate = this.getTemplate();
+// 			that.oSearchField.setModel(oModel);
+// 			that.oSearchField.bindAggregation("suggestionItems", "/", oTemplate);	
+			
+// 	};	
+	
+// 	insertData = function() {
+
+// 			if (selectedDimension)
+// 				{
+// 				var dim = selectedDimension.toUpperCase();
+// 					that.callZTLFunction("getMembers", that.getData, dim);
+// 				}
+					
+// //			data = dataResultSet.dimensions[0].members;
+// //			oModel.setSizeLimit(maxItems);			
+// 	};
 		
-	}};
+// 	DataResultSet = function(value) {
+// 			if(value===undefined) {
+// 				return dataResultSet;
+// 			} else {
+// 				//Clear Auto
+// 				if (reload) {
+// 					that.oSearchField.removeAllSuggestionItems();
+// 					that.oSearchField.setValue("");
+// 					reload = false;
+// 				}
+// 				dataResultSet = value;
+// 				return this;
+// 			};
+// 	};	
+		
+// 	DisplayKey = function(value) {
+// 			if(value===undefined) {
+// 				Reload = false;
+// 				return displayKey;
+// 			} else {
+// 				Reload = false;
+// 				displayKey = value;
+// 				return this;
+// 			};
+// 	};
+
+// 	IsEnabled = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return isEnabled;
+// 		} else {
+// 			Reload = false;
+// 			isEnabled = value;
+// 			return this;
+// 		};
+// 	};
+	
+// 	PlaceHolder = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return placeHolder;
+// 		} else {
+// 			Reload = false;
+// 			placeHolder = value;
+// 			return this;
+// 		};
+// 	};
+	
+// 	IsSearchButton = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return isSearchButton;
+// 		} else {
+// 			Reload = false;
+// 			isSearchButton = value;
+// 			return this;
+// 		};
+// 	};
+// 	MaxLength = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return maxLength;
+// 		} else {
+// 			Reload = false;
+// 			maxLength = value;
+// 			return this;
+// 		};
+// 	};
+// 	SelectedDimension = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return selectedDimension;
+// 		} else {
+// 			Reload = false;
+// 			selectedDimension = value;
+// 			return this;
+// 		};
+// 	};
+	
+	
+// 	IsSuggestions = function(value) {
+// 		if(value===undefined) {
+// 			Reload = false;
+// 			return isSuggestions;
+// 		} else {
+// 			Reload = false;
+// 			isSuggestions = value;
+// 			return this;
+// 		};
+// 	};
+
+// 	SelectedValue = function(value) {
+// 		if(value===undefined) {
+// 			return selectedValue;
+// 		} else {
+// 			selectedValue = value;
+// 			return this;
+// 		};
+// 	};
+	
+// 	SelectedText = function(value) {
+// 		if(value===undefined) {
+// 			return selectedText;
+// 		} else {
+// 			selectedText = value;
+// 			return this;
+// 		};
+// 	};	
+		
+	};
 	  /* Define web component - input: tag and class */
 	  customElements.define('com-iprosis-sample-search', ISearch);
 	})();
