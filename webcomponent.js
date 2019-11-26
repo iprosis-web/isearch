@@ -96,7 +96,7 @@ class ISearch extends HTMLElement {
 				}
 			});
 
-			$(this).html('<div id="' + currentDiv + '"> ');
+			this.innerHTML = '<div id="' + currentDiv + '"> ';
 			that.oSearchField.placeAt(currentDiv);
 			this._alive = true;
 		}
