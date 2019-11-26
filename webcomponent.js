@@ -39,6 +39,7 @@ class ISearch extends HTMLElement {
 
 	constructor() {
 		super();
+		console.log("In constructor");
 		this._shadowRoot = this.attachShadow({mode: 'open'});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		var dataResultSet = null;
@@ -76,6 +77,7 @@ class ISearch extends HTMLElement {
 				that.oSearchField = new sap.m.SearchField(currentSf, {
 					enableSuggestions: true,
 					search: function(oEvent) {
+						console.log("Im here");
 						var text = "";
 						var key = "";
 						var isFire = true;
