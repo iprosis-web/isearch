@@ -42,7 +42,7 @@
 				// Create Search Field control and load data
 				this.oSearchField = new sap.m.SearchField(currentSf, {
 					enableSuggestions: true,
-					search: function(oEvent) {
+					onSearch: function(oEvent) {
 						console.log('Im here');
 						var text = '';
 						var key = '';
