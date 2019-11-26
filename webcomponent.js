@@ -1,6 +1,7 @@
 (function()  {
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
+
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 	<script id="sap-ui-bootstrap"
 	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
@@ -9,7 +10,8 @@
 	data-sap-ui-resourceroots='{"Quickstart": "./"}'
 	data-sap-ui-async="true">
 	</script>
-	<div id="abc" class="sfContainer"></div>
+
+
 	`;
 
 class ISearch extends HTMLElement {
@@ -101,10 +103,15 @@ class ISearch extends HTMLElement {
 
 			//this.innerHTML = '<div id="' + currentDiv + '"> ';
 			
+			let divContainer = document.createElement('div');
+			divContainer.id = "xyz";
+			this._shadowRoot.appendChild(divContainer);
+			console.log("Shadow root :");
+			console.log(this._shadowRoot);
 			console.log("Seaarch  field :");
 			console.log(this.oSearchField);
 			//this.id = currentDiv;
-			this.oSearchField.placeAt("abc");
+			this.oSearchField.placeAt("xyz");
 			this._alive = true;
 		}
 	};
