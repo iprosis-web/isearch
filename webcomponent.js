@@ -9,6 +9,7 @@
 	data-sap-ui-resourceroots='{"Quickstart": "./"}'
 	data-sap-ui-async="true">
 	</script>
+	<div id="abc" class="sfContainer"></div>
 	`;
 
 class ISearch extends HTMLElement {
@@ -99,10 +100,11 @@ class ISearch extends HTMLElement {
 			});
 
 			//this.innerHTML = '<div id="' + currentDiv + '"> ';
+			
 			console.log("Seaarch  field :");
 			console.log(this.oSearchField);
-			this.id = currentDiv;
-			this.oSearchField.placeAt(this.id);
+			//this.id = currentDiv;
+			this.oSearchField.placeAt("abc");
 			this._alive = true;
 		}
 	};
