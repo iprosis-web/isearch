@@ -30,11 +30,9 @@ class ISearch extends HTMLElement {
 		var selectedValue = null;
 		var selectedText = null;
 		var reload = false;
-		var that = this;
 		var Data = null;
 		this.oSearchField = null;
-
-		var that = this;		
+		
 		if (window.sap && sap.zen && sap.zen.designmode) {
 			var x = "dd";
 		}
@@ -97,7 +95,7 @@ class ISearch extends HTMLElement {
 			});
 
 			this.innerHTML = '<div id="' + currentDiv + '"> ';
-			that.oSearchField.placeAt(currentDiv);
+			//this.oSearchField.placeAt(currentDiv);
 			this._alive = true;
 		}
 	};
