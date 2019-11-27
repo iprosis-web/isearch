@@ -4,8 +4,8 @@
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script onload="console.log(ONE MOREEEEEE)" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script onload="console.log('Loadedddddddd')" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	
 	
 	
@@ -42,9 +42,9 @@
 
 			let availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
 
-			$(window).load(function() {
-				console.log('loaded!!!');
-			});
+			// $(window).load(function() {
+			// 	console.log('loaded!!!');
+			// });
 
 			// $('#tags', shadow).autocomplete({
 			// 	source: availableTutorials
