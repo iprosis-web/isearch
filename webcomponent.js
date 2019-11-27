@@ -13,7 +13,7 @@
 		integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
 		crossorigin="anonymous"></script>
 
-		<div class="ui-widget">
+		<div class="ui-widget" id="container">
   			<labelfor="tags">Tags: </label>
   			<input id="tags">
 		</div>
@@ -27,7 +27,7 @@
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
-			let containerDiv = shadow.querySelector('#ui-widget');
+			let containerDiv = shadow.querySelector('#container');
 			let btn1 = document.createElement('BUTTON');
 			btn1.id = 'btn1';
 			containerDiv.append(btn1);
@@ -38,6 +38,7 @@
 
 			btn1.onclick = function() {
 				console.log('Button1 !!!');
+				console.log($('#btn2', shadow).html);
 			};
 
 			// if (this._alive) {
