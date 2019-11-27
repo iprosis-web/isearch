@@ -38,7 +38,7 @@
 
 			btn1.onclick = function() {
 				console.log('Button1 !!!');
-				console.log($('#btn2', shadow).html);
+				console.log($('#btn2', shadow).id);
 			};
 
 			// if (this._alive) {
