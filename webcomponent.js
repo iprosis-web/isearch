@@ -41,9 +41,18 @@
 				$('#btn2', shadow).html('Button2');
 			};
 
-			var availableTags = ['ActionScript', 'AppleScript', 'Scheme'];
-
-			// $('#tags', shadow).autocomplete({ source: availableTags });
+			$(function() {
+				var availableTutorials = [
+					'ActionScript',
+					'Bootstrap',
+					'C',
+					'C++'
+				];
+				$('#tags, shadow').autocomplete({
+					source: availableTutorials,
+					autoFocus: true
+				});
+			});
 
 			// if (this._alive) {
 			// 	return;
