@@ -124,7 +124,7 @@
 				});
 
 				inp.addEventListener('keydown', function(e) {
-					var x = document.getElementById(
+					var x = shadow.getElementById(
 						this.id + 'autocomplete-list'
 					);
 					if (x) x = x.getElementsByTagName('div');
@@ -156,9 +156,7 @@
 					}
 				}
 				function closeAllLists(elmnt) {
-					var x = document.getElementsByClassName(
-						'autocomplete-items'
-					);
+					var x = shadow.getElementsByClassName('autocomplete-items');
 					for (var i = 0; i < x.length; i++) {
 						if (elmnt != x[i] && elmnt != inp) {
 							x[i].parentNode.removeChild(x[i]);
