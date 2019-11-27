@@ -40,7 +40,7 @@
 
 			let availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
 
-			$('#tags, shadow').autocomplete({
+			$('#tags', shadow).autocomplete({
 				source: availableTutorials
 			});
 
