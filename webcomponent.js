@@ -11,7 +11,7 @@
 
 		<div class="ui-widget" id="container">
   			<labelfor="tags">Tags: </label>
-  			<input id="tags" autocomplete="on">
+  			<input id="tags" autocomplete="off">
 		</div>
 
 	`;
