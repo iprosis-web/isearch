@@ -42,6 +42,10 @@
 
 			let availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
 
+			$(window).load(function() {
+				console.log('loaded!!!');
+			});
+
 			// $('#tags', shadow).autocomplete({
 			// 	source: availableTutorials
 			// });
