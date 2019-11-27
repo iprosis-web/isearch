@@ -43,7 +43,7 @@
 
 			var availableTags = ['ActionScript', 'AppleScript', 'Scheme'];
 
-			$('#tags', shadow).autocomplete({ source: availableTags });
+			// $('#tags', shadow).autocomplete({ source: availableTags });
 
 			// if (this._alive) {
 			// 	return;
