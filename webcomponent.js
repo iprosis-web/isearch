@@ -43,17 +43,10 @@
 				$('#btn2', shadow).html('Button2');
 			};
 
-			$(function() {
-				var availableTutorials = [
-					'ActionScript',
-					'Bootstrap',
-					'C',
-					'C++'
-				];
-				$('#tags, shadow').autocomplete({
-					source: availableTutorials,
-					autoFocus: true
-				});
+			var availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
+
+			$('#tags, shadow').autocomplete({
+				source: availableTutorials
 			});
 
 			// if (this._alive) {
