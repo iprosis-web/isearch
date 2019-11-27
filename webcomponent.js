@@ -87,6 +87,8 @@
 						b,
 						i,
 						val = this.value;
+					console.log('this :');
+					console.log(this);
 					closeAllLists();
 					if (!val) {
 						return false;
