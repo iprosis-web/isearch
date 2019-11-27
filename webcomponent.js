@@ -11,7 +11,7 @@
 
 		<div class="ui-widget" id="container">
   			<labelfor="tags">Tags: </label>
-  			<input id="tags">
+  			<input id="tags" autocomplete="on">
 		</div>
 
 	`;
@@ -39,11 +39,9 @@
 
 			let availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
 
-			$('#tags, shadow').autocomplete = 'on';
-
-			// $('#tags, shadow').autocomplete({
-			// 	source: availableTutorials
-			// });
+			$('#tags, shadow').autocomplete({
+				source: availableTutorials
+			});
 
 			// if (this._alive) {
 			// 	return;
