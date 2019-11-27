@@ -7,40 +7,9 @@
  		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-		<script>
-		$(function() {
-				var availableTags = [
-					'ActionScript',
-					'AppleScript',
-					'Asp',
-					'BASIC',
-					'C',
-					'C++',
-					'Clojure',
-					'COBOL',
-					'ColdFusion',
-					'Erlang',
-					'Fortran',
-					'Groovy',
-					'Haskell',
-					'Java',
-					'JavaScript',
-					'Lisp',
-					'Perl',
-					'PHP',
-					'Python',
-					'Ruby',
-					'Scala',
-					'Scheme'
-				];
-				$('#tags').autocomplete({
-					source: availableTags
-				});
-			});
-		</script>
 
 		<div class="ui-widget">
-  			<label for="tags">Tags: </label>
+  			<labelfor="tags">Tags: </label>
   			<input id="tags">
 		</div>
 
