@@ -87,9 +87,8 @@
 						b,
 						i,
 						val = this.value;
-					console.log('this :');
-					console.log(this);
-					closeAllLists();
+
+					//closeAllLists();
 					if (!val) {
 						return false;
 					}
@@ -116,7 +115,7 @@
 								inp.value = this.getElementsByTagName(
 									'input'
 								)[0].value;
-								closeAllLists();
+								//closeAllLists();
 							});
 							a.appendChild(b);
 						}
@@ -164,7 +163,7 @@
 					}
 				}
 				document.addEventListener('click', function(e) {
-					closeAllLists(e.target);
+					//closeAllLists(e.target);
 				});
 			}
 
