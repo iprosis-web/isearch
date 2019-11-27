@@ -66,7 +66,7 @@
 
 		</style>
 
-		<div class="autocomplete id="container" style="width:300px;">
+		<div class="autocomplete" id="container" style="width:300px;">
 			<input id="myInput" type="text" name="myCountry" placeholder="Country">
 		</div>
 
