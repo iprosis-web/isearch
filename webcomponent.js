@@ -39,9 +39,9 @@
 
 			let availableTutorials = ['ActionScript', 'Bootstrap', 'C', 'C++'];
 
-			$('#tags, shadow').autocomplete({
-				source: availableTutorials
-			});
+			// $('#tags, shadow').autocomplete({
+			// 	source: availableTutorials
+			// });
 
 			// if (this._alive) {
 			// 	return;
