@@ -2,20 +2,15 @@
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
 
-	<link rel="stylesheet" href="https://sapui5.hana.ondemand.com/1.60.13/resources/sap/m/themes/sap_belize/library.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  		<link rel="stylesheet" href="/resources/demos/style.css">
+ 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	<script id="sap-ui-bootstrap"
-	https://sapui5.hana.ondemand.com/resources/sap-ui-core.js
-	data-sap-ui-theme="sap_belize"
-	data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
-	data-sap-ui-resourceroots='{"Quickstart": "./"}'
-	data-sap-ui-async="true">
-	</script>
-
-	<div id='sfContainer'>
-	
-	</div>
-
+		<div class="ui-widget">
+  			<label for="tags">Tags: </label>
+  			<input id="tags">
+		</div>
 
 	`;
 
@@ -26,75 +21,39 @@
 			this._shadowRoot = this.attachShadow({ mode: 'open' });
 			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 
-			var isSuggestions = null;
-			var selectedText = null;
-			this.oSearchField = null;
-
-			if (window.sap && sap.zen && sap.zen.designmode) {
-				var x = 'dd';
-			}
+			$(function() {
+				var availableTags = [
+					'ActionScript',
+					'AppleScript',
+					'Asp',
+					'BASIC',
+					'C',
+					'C++',
+					'Clojure',
+					'COBOL',
+					'ColdFusion',
+					'Erlang',
+					'Fortran',
+					'Groovy',
+					'Haskell',
+					'Java',
+					'JavaScript',
+					'Lisp',
+					'Perl',
+					'PHP',
+					'Python',
+					'Ruby',
+					'Scala',
+					'Scheme'
+				];
+				$('#tags').autocomplete({
+					source: availableTags
+				});
+			});
 
 			if (this._alive) {
 				return;
 			} else {
-				var currentSf = 'SF_' + Math.floor(Math.random() * 1000);
-
-				// Create Search Field control and load data
-				this.oSearchField = new sap.m.SearchField(currentSf, {
-					//enableSuggestions: true,
-					tooltip: 'Search for Products',
-
-					liveChange: function() {
-						console.log('LIveeeeee ');
-					},
-					search: function(oEvent) {
-						console.log('Im here');
-						var text = '';
-						var key = '';
-						var isFire = true;
-						if (isSuggestions === false) {
-							text = oEvent.getParameter('query');
-							key = text;
-						} else {
-							var item = oEvent.getParameter('suggestionItem');
-							if (item) {
-								text = item.getText();
-								key = item.getKey();
-							} else if (
-								oEvent.getParameter('query') === selectedText
-							) {
-								isFire = false;
-							}
-						}
-						//		oEvent.getParameter("query");
-						if (isFire) {
-							selectedValue = key;
-							selectedText = text;
-							that.firePropertiesChanged(['SelectedValue']);
-							that.firePropertiesChanged(['SelectedText']);
-							that.fireEvent('onSearch');
-						}
-					}
-
-					// suggest: function(oEvent) {
-					// 	var value = oEvent.getParameter('suggestValue');
-					// 	var filters = [];
-					// 	if (value !== '') {
-					// 		filters = that.getFilters(value);
-					// 	} else {
-					// 		filters = that.getFilters('999999iprosis');
-					// 	}
-					// 	that.oSearchField
-					// 		.getBinding('suggestionItems')
-					// 		.filter(filters);
-					// 	that.oSearchField.suggest();
-					// }
-				});
-
-				let sfContainer = this.shadowRoot.getElementById('sfContainer');
-
-				this.oSearchField.placeAt(sfContainer);
-
 				this._alive = true;
 			}
 		}
