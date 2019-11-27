@@ -41,6 +41,10 @@
 				$('#btn2', shadow).html('Button2');
 			};
 
+			var availableTags = ['ActionScript', 'AppleScript', 'Scheme'];
+
+			$('#tags', shadow).autocomplete({ source: availableTags });
+
 			// if (this._alive) {
 			// 	return;
 			// } else {
