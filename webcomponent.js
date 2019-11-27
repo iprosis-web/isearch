@@ -2,11 +2,16 @@
 	let tmpl = document.createElement('template');
 	tmpl.innerHTML = `
 
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  		<link rel="stylesheet" href="/resources/demos/style.css">
- 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous">
+	</script>
 
+	<script
+		src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+		integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+		crossorigin="anonymous"></script>
 
 		<div class="ui-widget">
   			<labelfor="tags">Tags: </label>
@@ -19,14 +24,14 @@
 		constructor() {
 			super();
 
-			this._shadowRoot = this.attachShadow({ mode: 'open' });
-			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+			var shadowRoot = this.attachShadow({ mode: 'open' });
+			shadowRoot.appendChild(tmpl.content.cloneNode(true));
 
-			if (this._alive) {
-				return;
-			} else {
-				this._alive = true;
-			}
+			// if (this._alive) {
+			// 	return;
+			// } else {
+			// 	this._alive = true;
+			// }
 		}
 
 		// 	afterUpdate() {
