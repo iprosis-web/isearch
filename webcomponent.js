@@ -5,8 +5,7 @@
 	<link rel="stylesheet" href="https://sapui5.hana.ondemand.com/1.60.13/resources/sap/m/themes/sap_belize/library.css">
 
 	<script id="sap-ui-bootstrap"
-	src="https://sapui5.hana.ondemand.com/1.60.13/resources/sap/ui/thirdparty/jquery-mobile-custom-dbg.js"
-	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+	https://sapui5.hana.ondemand.com/resources/sap-ui-core.js
 	data-sap-ui-theme="sap_belize"
 	data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
 	data-sap-ui-resourceroots='{"Quickstart": "./"}'
