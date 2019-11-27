@@ -24,8 +24,21 @@
 		constructor() {
 			super();
 
-			var shadowRoot = this.attachShadow({ mode: 'open' });
-			shadowRoot.appendChild(tmpl.content.cloneNode(true));
+			let shadow = this.attachShadow({ mode: 'open' });
+			shadow.appendChild(tmpl.content.cloneNode(true));
+
+			let containerDiv = shadow.querySelector('#ui-widget');
+			let btn1 = document.createElement('BUTTON');
+			btn1.id = 'btn1';
+			containerDiv.append(btn1);
+
+			let btn2 = document.createElement('BUTTON');
+			btn2.id = 'btn2';
+			containerDiv.append(btn2);
+
+			btn1.onclick = function() {
+				console.log('Button1 !!!');
+			};
 
 			// if (this._alive) {
 			// 	return;
