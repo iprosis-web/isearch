@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="https://sapui5.hana.ondemand.com/1.60.13/resources/sap/m/themes/sap_belize/library.css">
 
 	<script id="sap-ui-bootstrap"
+	src="https://sapui5.hana.ondemand.com/1.60.13/resources/sap/ui/thirdparty/jquery-mobile-custom-dbg.js"
 	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
 	data-sap-ui-theme="sap_belize"
 	data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
@@ -49,31 +50,31 @@
 					},
 					search: function(oEvent) {
 						console.log('Im here');
-						// var text = '';
-						// var key = '';
-						// var isFire = true;
-						// if (isSuggestions === false) {
-						// 	text = oEvent.getParameter('query');
-						// 	key = text;
-						// } else {
-						// 	var item = oEvent.getParameter('suggestionItem');
-						// 	if (item) {
-						// 		text = item.getText();
-						// 		key = item.getKey();
-						// 	} else if (
-						// 		oEvent.getParameter('query') === selectedText
-						// 	) {
-						// 		isFire = false;
-						// 	}
-						// }
-						// //		oEvent.getParameter("query");
-						// if (isFire) {
-						// 	selectedValue = key;
-						// 	selectedText = text;
-						// 	that.firePropertiesChanged(['SelectedValue']);
-						// 	that.firePropertiesChanged(['SelectedText']);
-						// 	that.fireEvent('onSearch');
-						// }
+						var text = '';
+						var key = '';
+						var isFire = true;
+						if (isSuggestions === false) {
+							text = oEvent.getParameter('query');
+							key = text;
+						} else {
+							var item = oEvent.getParameter('suggestionItem');
+							if (item) {
+								text = item.getText();
+								key = item.getKey();
+							} else if (
+								oEvent.getParameter('query') === selectedText
+							) {
+								isFire = false;
+							}
+						}
+						//		oEvent.getParameter("query");
+						if (isFire) {
+							selectedValue = key;
+							selectedText = text;
+							that.firePropertiesChanged(['SelectedValue']);
+							that.firePropertiesChanged(['SelectedText']);
+							that.fireEvent('onSearch');
+						}
 					}
 
 					// suggest: function(oEvent) {
