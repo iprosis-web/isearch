@@ -7,21 +7,8 @@
  		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-		<div class="ui-widget">
-  			<label for="tags">Tags: </label>
-  			<input id="tags">
-		</div>
-
-	`;
-
-	class ISearch extends HTMLElement {
-		constructor() {
-			super();
-
-			this._shadowRoot = this.attachShadow({ mode: 'open' });
-			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-
-			$(function() {
+		<script>
+		$(function() {
 				var availableTags = [
 					'ActionScript',
 					'AppleScript',
@@ -50,6 +37,21 @@
 					source: availableTags
 				});
 			});
+		</script>
+
+		<div class="ui-widget">
+  			<label for="tags">Tags: </label>
+  			<input id="tags">
+		</div>
+
+	`;
+
+	class ISearch extends HTMLElement {
+		constructor() {
+			super();
+
+			this._shadowRoot = this.attachShadow({ mode: 'open' });
+			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 
 			if (this._alive) {
 				return;
