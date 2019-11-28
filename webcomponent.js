@@ -189,7 +189,7 @@
 		selectedValue = 'test value1';
 
 		get value() {
-			return this.selectedValue;
+			return 'hhhhhhhh';
 		}
 
 		// get value() {
