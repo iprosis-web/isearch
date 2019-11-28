@@ -186,9 +186,11 @@
 			'Antigua'
 		];
 
-		get countries() {
-			return this.countries;
-		}
+		selectedValue = 'test value1';
+
+		// get value() {
+		// 	return this.countries;
+		// }
 
 		// 	afterUpdate() {
 		// 			that.oSearchField.setEnabled(isEnabled);
