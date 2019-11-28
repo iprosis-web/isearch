@@ -167,17 +167,7 @@
 				});
 			}
 
-			var countries = [
-				'Afghanistan',
-				'Albania',
-				'Algeria',
-				'Andorra',
-				'Angola',
-				'Anguilla',
-				'Antigua'
-			];
-
-			autocomplete(shadow.querySelector('#myInput'), countries);
+			autocomplete(shadow.querySelector('#myInput'), this.countries);
 
 			if (this._alive) {
 				return;
@@ -186,19 +176,15 @@
 			}
 		}
 
-		get val() {
-			return this.val;
-			//return this._shadowRoot.getElementById("aps_val").value ;
-		}
-
-		set val(value) {
-			this.val = value;
-			//this._shadowRoot.getElementById("aps_val").value = value;
-		}
-
-		val = '';
-
-		selectedText = 'qwer';
+		countries = [
+			'Afghanistan',
+			'Albania',
+			'Algeria',
+			'Andorra',
+			'Angola',
+			'Anguilla',
+			'Antigua'
+		];
 
 		// 	afterUpdate() {
 		// 			that.oSearchField.setEnabled(isEnabled);
