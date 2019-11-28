@@ -45,8 +45,7 @@
 		"getValue": {
 			"returnType": "string",
 			"description": "Returns the selected value",
-			"parameters": [],
-			"body": "return this.selectedValue;"
+			"parameters": []
 		},
 		"getText": {
 			"returnType": "string",
