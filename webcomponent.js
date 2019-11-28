@@ -74,9 +74,10 @@
 	`;
 
 	class ISearch extends HTMLElement {
+		selectedValue;
 		constructor() {
 			super();
-
+			this.selectedValue = 'test test test';
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
@@ -185,8 +186,6 @@
 			'Anguilla',
 			'Antigua'
 		];
-
-		selectedValue = 'test value1';
 
 		get value() {
 			return 'hhhhhhhh';

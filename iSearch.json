@@ -72,7 +72,7 @@
 		}
 	},
 	"events": {
-		"onSearchue": {
+		"onSearch": {
 			"description": "On search event"
 		}
 	}
