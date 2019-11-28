@@ -6,9 +6,9 @@
 	"license": "",
 	"id": "com.iProsis.sample.search",
 	"newInstancePrefix": "iSearch",
-	"icon" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
+	"icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
 	"version": "1.0.0",
-	"imports": ["ResultSet", "DataSource","InputField"],
+	"imports": ["ResultSet", "DataSource", "InputField"],
 
 	"webcomponents": [
 		{
@@ -17,9 +17,7 @@
 			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
 			"integrity": "",
 			"ignoreIntegrity": true
-			
 		}
-
 	],
 	"properties": {
 		"width": {
@@ -28,20 +26,19 @@
 		},
 		"height": {
 			"type": "number",
-			"default":50
+			"default": 50
 		},
-		"selectedValue":{
+		"selectedValue": {
 			"type": "string",
 			"description": "Key result set"
-			
 		},
-		"selectedText":{
+		"selectedText": {
 			"type": "string",
-			"description": "Text result set"			
+			"description": "Text result set"
 		},
-		"sdata":{
+		"sdata": {
 			"type": "string",
-			"description": "data"			
+			"description": "data"
 		}
 	},
 	"methods": {
@@ -59,14 +56,16 @@
 		},
 		"getData": {
 			"description": "Returns the data as list",
-			"parameters":[ {
-				"name": "dataRes",
-				"type": "string",
-				"description": "list to suggest"
-			}],
-		"body": "this.sdata = dataRes;"
+			"parameters": [
+				{
+					"name": "dataRes",
+					"type": "string",
+					"description": "list to suggest"
+				}
+			],
+			"body": "this.sdata = dataRes;"
 		},
-		"setData":{
+		"setData": {
 			"returnType": "string",
 			"description": "Returns list - check",
 			"parameters": [],
@@ -74,7 +73,7 @@
 		}
 	},
 	"events": {
-		"onSearch": {
+		"onSearchue": {
 			"description": "On search event"
 		}
 	}
