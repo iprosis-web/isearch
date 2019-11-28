@@ -198,6 +198,8 @@
 
 		val = '';
 
+		selectedText = 'qwer';
+
 		// 	afterUpdate() {
 		// 			that.oSearchField.setEnabled(isEnabled);
 		// 			that.oSearchField.setPlaceholder(placeHolder);
