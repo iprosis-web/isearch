@@ -186,6 +186,18 @@
 			}
 		}
 
+		get val() {
+			return this.val;
+			//return this._shadowRoot.getElementById("aps_val").value ;
+		}
+
+		set val(value) {
+			this.val = value;
+			//this._shadowRoot.getElementById("aps_val").value = value;
+		}
+
+		val = '';
+
 		// 	afterUpdate() {
 		// 			that.oSearchField.setEnabled(isEnabled);
 		// 			that.oSearchField.setPlaceholder(placeHolder);
