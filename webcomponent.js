@@ -188,6 +188,10 @@
 
 		selectedValue = 'test value1';
 
+		get value() {
+			return this.selectedValue;
+		}
+
 		// get value() {
 		// 	return this.countries;
 		// }
