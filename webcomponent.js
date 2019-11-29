@@ -87,6 +87,6 @@
 		}
 	}
 	/* Define web component - input: tag and class */
-	let tmpl = customElements.define('com-iprosis-sample-search', ISearch);
-	console.log('Tmpllllllll :', tmpl);
+	let ttt = customElements.define('com-iprosis-sample-search', ISearch);
+	console.log('Tmpllllllll :', ttt);
 })();
