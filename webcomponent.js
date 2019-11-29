@@ -87,7 +87,7 @@
 			console.log(50);
 		}
 
-		get value() {
+		getValue() {
 			console.log('This :', this);
 			return 'hhhhhhhh';
 		}
