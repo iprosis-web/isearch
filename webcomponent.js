@@ -188,6 +188,7 @@
 		];
 
 		get value() {
+			console.log('This :', this);
 			return 'hhhhhhhh';
 		}
 
