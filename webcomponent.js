@@ -169,12 +169,6 @@
 			}
 
 			autocomplete(shadow.querySelector('#myInput'), this.countries);
-
-			if (this._alive) {
-				return;
-			} else {
-				this._alive = true;
-			}
 		}
 
 		countries = [
