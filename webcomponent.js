@@ -1,5 +1,7 @@
 (function() {
+	console.log(1);
 	let tmpl = document.createElement('template');
+	console.log(2);
 	tmpl.innerHTML = `
 
 		<style>
@@ -72,13 +74,17 @@
 
 
 	`;
-
+	console.log(10);
 	class ISearch extends HTMLElement {
 		constructor() {
 			super();
+			console.log(20);
 			this.selectedValue = 'test test test';
+			console.log(30);
 			let shadow = this.attachShadow({ mode: 'open' });
+			console.log(40);
 			shadow.appendChild(tmpl.content.cloneNode(true));
+			console.log(50);
 		}
 
 		get value() {
@@ -86,7 +92,9 @@
 			return 'hhhhhhhh';
 		}
 	}
+	console.log(60);
 	/* Define web component - input: tag and class */
 	let ttt = customElements.define('com-iprosis-sample-search', ISearch);
+	console.log(70);
 	console.log('Tmpllllllll :', ttt);
 })();
