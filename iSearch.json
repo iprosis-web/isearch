@@ -14,7 +14,7 @@
 		{
 			"kind": "main",
 			"tag": "com-iprosis-sample-search",
-			"url": "https://github.com/iprosis-web/isearch/webcomponent.js",
+			"url": "https://iprosis-web.github.io/isearch/webcomponent.js",
 			"integrity": "",
 			"ignoreIntegrity": true
 		}
