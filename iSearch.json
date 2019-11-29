@@ -1,11 +1,11 @@
 {
-	"name": "iSearch",
-	"description": "iSearch Widget Github",
+	"name": "testcomp",
+	"description": "testing new componemt",
 	"eula": "",
 	"vendor": "iProsis",
 	"license": "",
-	"id": "com.iProsis.sample.search",
-	"newInstancePrefix": "iSearch",
+	"id": "com.iProsis.sample.testcomp",
+	"newInstancePrefix": "testcomp",
 	"icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
 	"version": "1.0.0",
 	"imports": ["ResultSet", "DataSource", "InputField"],
@@ -14,7 +14,7 @@
 		{
 			"kind": "main",
 			"tag": "com-iprosis-sample-search",
-			"url": "https://annakrasnitski.github.io/isearch/webcomponent.js",
+			"url": "https://github.com/iprosis-web/isearch/blob/master/webcomponent.js",
 			"integrity": "",
 			"ignoreIntegrity": true
 		}
