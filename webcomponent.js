@@ -96,8 +96,8 @@
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
-			var sfRandomId = 'SF_' + Math.floor(Math.random() * 1000);
-			let SF = new sap.m.SearchField(sfRandomId, {
+			let sfRandomId = 'SF_' + Math.floor(Math.random() * 1000);
+			this.SF = new sap.m.SearchField(sfRandomId, {
 				tooltip: 'Search for Products',
 				liveChange: filterTable
 			});
