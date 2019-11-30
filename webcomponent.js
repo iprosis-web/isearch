@@ -77,13 +77,13 @@
 
 	class ISearch extends HTMLElement {
 		constructor() {
+			super();
+
 			if (this._alive) {
 				return;
 			} else {
 				this._alive = true;
 			}
-
-			super();
 
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
