@@ -85,7 +85,7 @@
 				var currentFocus;
 				inp.addEventListener('input', function(e) {
 					let val = this.value;
-					//closeAllLists();
+					closeAllLists();
 					if (!val) {
 						return false;
 					}
