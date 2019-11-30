@@ -88,6 +88,7 @@
 			super();
 
 			if (this._alive) {
+				console.log('Aliiiiveeee !');
 				return;
 			} else {
 				this._alive = true;
