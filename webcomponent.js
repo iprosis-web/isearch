@@ -104,11 +104,12 @@
 								'<strong>' +
 								arr[i].substr(0, val.length) +
 								'</strong>' +
-								arr[i].substr(val.length) +
-								b.addEventListener('click', function(e) {
-									inp.value = this.innerText;
-									closeAllLists();
-								});
+								arr[i].substr(val.length);
+
+							b.addEventListener('click', function(e) {
+								inp.value = this.innerText;
+								closeAllLists();
+							});
 							a.appendChild(b);
 						}
 					}
