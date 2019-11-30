@@ -81,8 +81,6 @@
 		<div class="autocomplete" id="container" style="width:300px;">
 			<input id="myInput" type="text" name="myCountry" placeholder="Country">
 		</div>
-
-
 	`;
 
 	class ISearch extends HTMLElement {
@@ -109,7 +107,7 @@
 				console.log('Search liveeeeeee!');
 			}
 
-			let topDiv = shadow.getElementById('#container');
+			let topDiv = shadow.getElementById('container');
 			SF.placeAt(topDiv);
 		}
 
