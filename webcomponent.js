@@ -107,7 +107,8 @@
 			}
 
 			let topDiv = shadow.getElementById('container');
-			SF.placeAt(topDiv);
+			console.log('SF :', this.SF);
+			this.SF.placeAt(topDiv);
 		}
 
 		getValue() {
