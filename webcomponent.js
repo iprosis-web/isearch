@@ -109,10 +109,8 @@
 				console.log('Search liveeeeeee!');
 			}
 
-			let topDiv = shadow.getElementById('autocomplete');
+			let topDiv = shadow.getElementById('#container');
 			SF.placeAt(topDiv);
-
-			this._alive = true;
 		}
 
 		getValue() {
