@@ -8,6 +8,10 @@
 
 		<script id="sap-ui-bootstrap"
 		https://sapui5.hana.ondemand.com/resources/sap-ui-core.js
+
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+
 		data-sap-ui-theme="sap_belize"
 		data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
 		data-sap-ui-resourceroots='{"Quickstart": "./"}'
