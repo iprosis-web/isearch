@@ -78,11 +78,10 @@
 	class ISearch extends HTMLElement {
 		constructor() {
 			super();
-			this.selectedValue = 'test test test';
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
-			var SF = new sap.m.SearchField('SF', {
+			var SF = new sap.m.SearchField('SF77', {
 				tooltip: 'Search for Products',
 				width: '500px',
 				liveChange: filterTable
@@ -92,7 +91,8 @@
 				console.log('Search liveeeeeee!');
 			}
 
-			shadow.appendChild(SF);
+			let topDiv = shadow.getElementById('autocomplete');
+			shadow.appendChild(topDiv);
 		}
 
 		getValue() {
