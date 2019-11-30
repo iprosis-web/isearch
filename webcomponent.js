@@ -77,11 +77,18 @@
 
 	class ISearch extends HTMLElement {
 		constructor() {
+			if (this._alive) {
+				return;
+			} else {
+				this._alive = true;
+			}
+
 			super();
+
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
-			var SF = new sap.m.SearchField('SF77', {
+			let SF = new sap.m.SearchField('SF77', {
 				tooltip: 'Search for Products',
 				width: '500px',
 				liveChange: filterTable
@@ -92,7 +99,9 @@
 			}
 
 			let topDiv = shadow.getElementById('autocomplete');
-			shadow.appendChild(topDiv);
+			SF.placeAt(topDiv);
+
+			this._alive = true;
 		}
 
 		getValue() {
@@ -100,9 +109,6 @@
 			return 'hhhhhhhh';
 		}
 	}
-	console.log(60);
 	/* Define web component - input: tag and class */
 	let ttt = customElements.define('com-iprosis-sample-search', ISearch);
-	console.log(70);
-	console.log('Tmpllllllll :', ttt);
 })();
