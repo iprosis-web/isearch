@@ -99,7 +99,6 @@
 			var sfRandomId = 'SF_' + Math.floor(Math.random() * 1000);
 			let SF = new sap.m.SearchField(sfRandomId, {
 				tooltip: 'Search for Products',
-				width: '500px',
 				liveChange: filterTable
 			});
 
