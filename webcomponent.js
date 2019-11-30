@@ -84,11 +84,7 @@
 			function autocomplete(inp, arr) {
 				var currentFocus;
 				inp.addEventListener('input', function(e) {
-					var a,
-						b,
-						i,
-						val = this.value;
-
+					let val = this.value;
 					//closeAllLists();
 					if (!val) {
 						return false;
@@ -98,12 +94,12 @@
 					a.id = this.id + 'autocomplete-list';
 					a.classList.add('autocomplete-items');
 					this.parentNode.appendChild(a);
-					for (i = 0; i < arr.length; i++) {
+					for (let i = 0; i < arr.length; i++) {
 						if (
 							arr[i].substr(0, val.length).toUpperCase() ==
 							val.toUpperCase()
 						) {
-							b = document.createElement('div');
+							let b = document.createElement('div');
 							b.innerHTML =
 								'<strong>' +
 								arr[i].substr(0, val.length) +
