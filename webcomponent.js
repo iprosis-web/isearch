@@ -99,7 +99,9 @@
 			let sfRandomId = 'SF_' + Math.floor(Math.random() * 1000);
 			this.SF = new sap.m.SearchField(sfRandomId, {
 				tooltip: 'Search for Products',
-				liveChange: filterTable
+				liveChange: function() {
+					console.log('Hue');
+				}
 			});
 
 			function filterTable() {
