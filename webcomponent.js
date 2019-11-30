@@ -74,17 +74,25 @@
 
 
 	`;
-	console.log(10);
+
 	class ISearch extends HTMLElement {
 		constructor() {
 			super();
-			console.log(20);
 			this.selectedValue = 'test test test';
-			console.log(30);
 			let shadow = this.attachShadow({ mode: 'open' });
-			console.log(40);
 			shadow.appendChild(tmpl.content.cloneNode(true));
-			console.log(50);
+
+			var SF = new sap.m.SearchField('SF', {
+				tooltip: 'Search for Products',
+				width: '500px',
+				liveChange: filterTable
+			});
+
+			function filterTable() {
+				console.log('Search liveeeeeee!');
+			}
+
+			shadow.appendChild(SF);
 		}
 
 		getValue() {
