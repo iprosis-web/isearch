@@ -120,25 +120,27 @@
 					}
 				});
 
-				// inp.addEventListener('keydown', function(e) {
-				// 	var x = shadow.getElementById(
-				// 		this.id + 'autocomplete-list'
-				// 	);
-				// 	if (x) x = x.getElementsByTagName('div');
-				// 	if (e.keyCode == 40) {
-				// 		currentFocus++;
-				// 		addActive(x);
-				// 	} else if (e.keyCode == 38) {
-				// 		currentFocus--;
+				inp.addEventListener('keydown', function(e) {
+					var x = shadow.getElementById(
+						this.id + 'autocomplete-list'
+					);
+					if (x) x = x.getElementsByTagName('div');
+					if (e.keyCode == 40) {
+						// arrow down (https://keycode.info/)
+						currentFocus++;
+						addActive(x);
+					} else if (e.keyCode == 38) {
+						// arrow up (https://keycode.info/)
+						currentFocus--;
 
-				// 		addActive(x);
-				// 	} else if (e.keyCode == 13) {
-				// 		e.preventDefault();
-				// 		if (currentFocus > -1) {
-				// 			if (x) x[currentFocus].click();
-				// 		}
-				// 	}
-				// });
+						addActive(x);
+					} else if (e.keyCode == 13) {
+						e.preventDefault();
+						if (currentFocus > -1) {
+							if (x) x[currentFocus].click();
+						}
+					}
+				});
 				function addActive(x) {
 					if (!x) return false;
 
