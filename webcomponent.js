@@ -87,7 +87,7 @@
 				inp.addEventListener('input', function(e) {
 					console.log('20', shadow);
 					let val = this.value;
-					//closeAllLists();
+					closeAllLists();
 					if (!val) {
 						return false;
 					}
