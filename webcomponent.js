@@ -95,6 +95,8 @@
 					a.id = this.id + 'autocomplete-list';
 					a.classList.add('autocomplete-items');
 					this.parentNode.appendChild(a);
+					console.log('That :');
+					console.log(that);
 					for (let i = 0; i < arr.length; i++) {
 						if (
 							arr[i].substr(0, val.length).toUpperCase() ==
