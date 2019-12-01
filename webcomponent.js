@@ -82,10 +82,12 @@
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
 			function autocomplete(inp, arr) {
+				console.log('10', shadow);
 				var currentFocus;
 				inp.addEventListener('input', function(e) {
+					console.log('20', shadow);
 					let val = this.value;
-					closeAllLists();
+					//closeAllLists();
 					if (!val) {
 						return false;
 					}
@@ -100,15 +102,18 @@
 							val.toUpperCase()
 						) {
 							let b = document.createElement('div');
+							console.log('30', shadow);
 							b.innerHTML =
 								'<strong>' +
 								arr[i].substr(0, val.length) +
 								'</strong>' +
 								arr[i].substr(val.length);
 
+							let that = this;
 							b.addEventListener('click', function(e) {
+								console.log('40', shadow);
 								inp.value = this.innerText;
-								closeAllLists();
+								//closeAllLists();
 							});
 							a.appendChild(b);
 						}
@@ -156,7 +161,7 @@
 					}
 				}
 				document.addEventListener('click', function(e) {
-					closeAllLists(e.target);
+					//closeAllLists(e.target);
 				});
 			}
 
