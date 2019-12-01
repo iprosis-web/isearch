@@ -53,22 +53,20 @@
 			"parameters": [],
 			"body": "return this.selectedText;"
 		},
-		"getData": {
-			"description": "Returns the data as list",
+		"setDataModel": {
+			"description": "Sets the data",
 			"parameters": [
 				{
-					"name": "dataRes",
-					"type": "string",
-					"description": "list to suggest"
+					"name": "newData",
+					"type": "string[]",
+					"description": "Array of string items"
 				}
-			],
-			"body": "this.sdata = dataRes;"
+			]
 		},
-		"setData": {
-			"returnType": "string",
-			"description": "Returns list - check",
-			"parameters": [],
-			"body": "return this.sdata;"
+		"getDataModel": {
+			"returnType": "string[]",
+			"description": "Returns the data",
+			"parameters": []
 		}
 	},
 	"events": {

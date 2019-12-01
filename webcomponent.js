@@ -68,7 +68,7 @@
 
 		</style>
 
-		<div class="autocomplete" id="container" style="width:300px;">
+		<div class="autocomplete" id="container">
 			<input id="myInput" type="text" name="myCountry" placeholder="Country">
 		</div>
 	`;
@@ -179,8 +179,15 @@
 		];
 
 		getValue() {
-			this.dataModel = ['asdf', 'axcf', 'aklu', 'loty'];
 			return this.selectedValue;
+		}
+
+		getDataModel() {
+			return thisd.dataModel;
+		}
+
+		setDataModel(newdata) {
+			this.dataModel = newdata;
 		}
 	}
 
