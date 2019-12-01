@@ -183,7 +183,7 @@
 		}
 
 		getDataModel() {
-			return thisd.dataModel;
+			return this.dataModel;
 		}
 
 		setDataModel(newdata) {
