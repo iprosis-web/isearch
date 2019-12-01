@@ -7,7 +7,7 @@
 	"id": "com.iProsis.sample.testcomp",
 	"newInstancePrefix": "testcomp",
 	"icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lCMzJNKkqBwW2ikeSXiY2FnCGV3nuJL375u6Uic5pOTCE08Xlw&s",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"imports": ["ResultSet", "DataSource", "InputField"],
 
 	"webcomponents": [
