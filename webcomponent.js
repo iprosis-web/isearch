@@ -113,7 +113,7 @@
 							b.addEventListener('click', function(e) {
 								console.log('40', shadow);
 								inp.value = this.innerText;
-								//closeAllLists();
+								closeAllLists();
 							});
 							a.appendChild(b);
 						}
@@ -166,17 +166,11 @@
 					}
 				}
 				document.addEventListener('click', function(e) {
-					//closeAllLists(e.target);
+					closeAllLists(e.target);
 				});
 			}
 
 			autocomplete(shadow.querySelector('#myInput'), this.countries);
-
-			if (this._alive) {
-				return;
-			} else {
-				this._alive = true;
-			}
 		}
 
 		countries = [
