@@ -81,8 +81,7 @@
 
 			let that = this;
 
-			function autocomplete(inp, arr) {
-				let that = this;
+			function autocomplete(inp, arr, that) {
 				console.log('10', shadow);
 				var currentFocus;
 				inp.addEventListener('input', function(e) {
