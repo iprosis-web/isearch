@@ -79,6 +79,8 @@
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
+			let that = this;
+
 			function autocomplete(inp, arr) {
 				let that = this;
 				console.log('10', shadow);
@@ -165,10 +167,14 @@
 				});
 			}
 
-			autocomplete(shadow.querySelector('#myInput'), this.countries);
+			autocomplete(
+				shadow.querySelector('#myInput'),
+				this.countries,
+				that
+			);
 		}
 
-		selectedValue;
+		selectedValue = '';
 
 		countries = [
 			'Afghanistan',
