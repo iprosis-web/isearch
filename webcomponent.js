@@ -87,9 +87,6 @@
 				inp.addEventListener('input', function(e) {
 					let val = this.value;
 					closeAllLists();
-					// if (!val) {
-					// 	return false;
-					// }
 					currentFocus = -1;
 					let a = document.createElement('div');
 					a.id = this.id + 'autocomplete-list';
