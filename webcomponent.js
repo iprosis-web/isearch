@@ -82,7 +82,6 @@
 			let that = this;
 
 			function autocomplete(inp, that) {
-				let arr = that.dataModel;
 				let currentFocus;
 				inp.addEventListener('input', function(e) {
 					let val = this.value;
@@ -92,19 +91,18 @@
 					a.id = this.id + 'autocomplete-list';
 					a.classList.add('autocomplete-items');
 					this.parentNode.appendChild(a);
-					console.log('That :');
-					console.log(that);
-					for (let i = 0; i < arr.length; i++) {
+					for (let i = 0; i < that.dataModel.length; i++) {
 						if (
-							arr[i].substr(0, val.length).toUpperCase() ==
-							val.toUpperCase()
+							that.dataModel[i]
+								.substr(0, val.length)
+								.toUpperCase() == val.toUpperCase()
 						) {
 							let b = document.createElement('div');
 							b.innerHTML =
 								'<strong>' +
-								arr[i].substr(0, val.length) +
+								that.dataModel[i].substr(0, val.length) +
 								'</strong>' +
-								arr[i].substr(val.length);
+								that.dataModel[i].substr(val.length);
 							b.addEventListener('click', function(e) {
 								that.selectedValue = this.innerText;
 								inp.value = this.innerText;
