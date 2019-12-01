@@ -182,6 +182,7 @@
 		];
 
 		getValue() {
+			this.dataModel = ['asdf', 'axcf', 'aklu', 'loty'];
 			return this.selectedValue;
 		}
 	}
