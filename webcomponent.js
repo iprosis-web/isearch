@@ -76,7 +76,6 @@
 	class ISearch extends HTMLElement {
 		constructor() {
 			super();
-			selectedValue = '';
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
@@ -168,6 +167,8 @@
 
 			autocomplete(shadow.querySelector('#myInput'), this.countries);
 		}
+
+		selectedValue;
 
 		countries = [
 			'Afghanistan',
