@@ -74,23 +74,22 @@
 	`;
 
 	class ISearch extends HTMLElement {
-		selectedValue;
 		constructor() {
 			super();
-
+			selectedValue = '';
 			let shadow = this.attachShadow({ mode: 'open' });
 			shadow.appendChild(tmpl.content.cloneNode(true));
 
 			function autocomplete(inp, arr) {
+				let that = this;
 				console.log('10', shadow);
 				var currentFocus;
 				inp.addEventListener('input', function(e) {
-					console.log('20', shadow);
-					let val = this.value;
+					let val;
 					closeAllLists();
-					if (!val) {
-						return false;
-					}
+					// if (!val) {
+					// 	return false;
+					// }
 					currentFocus = -1;
 					let a = document.createElement('div');
 					a.id = this.id + 'autocomplete-list';
@@ -102,16 +101,13 @@
 							val.toUpperCase()
 						) {
 							let b = document.createElement('div');
-							console.log('30', shadow);
 							b.innerHTML =
 								'<strong>' +
 								arr[i].substr(0, val.length) +
 								'</strong>' +
 								arr[i].substr(val.length);
-
-							let that = this;
 							b.addEventListener('click', function(e) {
-								console.log('40', shadow);
+								that.selectedValue = this.innerText;
 								inp.value = this.innerText;
 								closeAllLists();
 							});
@@ -125,16 +121,16 @@
 						this.id + 'autocomplete-list'
 					);
 					if (x) x = x.getElementsByTagName('div');
+					// arrow down
 					if (e.keyCode == 40) {
-						// arrow down (https://keycode.info/)
 						currentFocus++;
 						addActive(x);
+						// arrow up
 					} else if (e.keyCode == 38) {
-						// arrow up (https://keycode.info/)
 						currentFocus--;
-
 						addActive(x);
 					} else if (e.keyCode == 13) {
+						//enter
 						e.preventDefault();
 						if (currentFocus > -1) {
 							if (x) x[currentFocus].click();
@@ -183,13 +179,9 @@
 			'Antigua'
 		];
 
-		get value() {
-			return 'hhhhhhhh';
+		getValue() {
+			return this.selectedValue;
 		}
-
-		// get value() {
-		// 	return this.countries;
-		// }
 	}
 
 	/* Define web component - input: tag and class */
