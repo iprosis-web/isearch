@@ -81,9 +81,9 @@
 
 			let that = this;
 
-			function autocomplete(inp, arr, that) {
-				console.log('10', shadow);
-				var currentFocus;
+			function autocomplete(inp, that) {
+				let arr = that.dataModel;
+				let currentFocus;
 				inp.addEventListener('input', function(e) {
 					let val = this.value;
 					closeAllLists();
@@ -166,16 +166,12 @@
 				});
 			}
 
-			autocomplete(
-				shadow.querySelector('#myInput'),
-				this.countries,
-				that
-			);
+			autocomplete(shadow.querySelector('#myInput'), that);
 		}
 
 		selectedValue = '';
 
-		countries = [
+		dataModel = [
 			'Afghanistan',
 			'Albania',
 			'Algeria',
