@@ -153,7 +153,10 @@
 					}
 				}
 				function closeAllLists(elmnt) {
-					var x = shadow.getElementsByClassName('autocomplete-items');
+					var xContainer = shadow.getElementById('container');
+					var x = xContainer.getElementsByClassName(
+						'autocomplete-items'
+					);
 					for (var i = 0; i < x.length; i++) {
 						if (elmnt != x[i] && elmnt != inp) {
 							x[i].parentNode.removeChild(x[i]);
